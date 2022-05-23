@@ -37,7 +37,7 @@ class WeatherForcastViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Weather Forcast"
+        setupNavigation()
         configureCollectionView()
         addViewModelObservers()
         createSnapshot(weatherList: [])
@@ -88,6 +88,17 @@ class WeatherForcastViewController: UIViewController {
             snapshot.appendItems([.loading(loadingItem)], toSection: .loading)
         }
         datasource.apply(snapshot)
+    }
+    
+    private func setupNavigation(){
+        title = "Weather Forcast"
+        
+        let settingBtn = UIBarButtonItem(image: UIImage(systemName: "gearshape"), style: .done, target: self, action: #selector(openSettingPage))
+        self.navigationItem.rightBarButtonItems = [settingBtn]
+    }
+    
+    @objc private func openSettingPage() {
+        
     }
 }
 

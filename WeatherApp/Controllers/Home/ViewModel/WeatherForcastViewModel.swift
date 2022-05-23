@@ -12,6 +12,7 @@ import CoreLocation
 protocol WeatherForcastModelInput {
     func fetchWeatherForcast()
     func pushToDetailScreen(model: WeatherForecastModel)
+    func openSettings()
 }
 
 protocol WeatherForcastViewModelOutput {
@@ -60,7 +61,7 @@ final class DefaultWeatherForcastViewModel: WeatherForcastViewModel {
     }
     
     private func fetchCurrentCoordinates(completion: @escaping(Double, Double) -> Void) {
-        LocationManager.shared.getLocation { [weak self] (location: CLLocation?, error:NSError?) in
+        LocationManager.shared.getLocation { (location: CLLocation?, error:NSError?) in
             if let error = error {
                 print(error.localizedDescription)
                 return
@@ -87,12 +88,16 @@ final class DefaultWeatherForcastViewModel: WeatherForcastViewModel {
     func pushToDetailScreen(model: WeatherForecastModel) {
         var model = model
         guard let weatherDataModel = weatherDataModel else {return}
-        var subInfoModel = WeatherDetailInfoModel(dateTime: model.dateInString,
+        let subInfoModel = WeatherDetailInfoModel(dateTime: model.dateInString,
                                                             cityName: weatherDataModel.cityName,
                                                             temp: model.temp,
                                                             lowTemp: model.lowTemp,
                                                             highTemp: model.highTemp,
                                                             weather: model.weather)
         self.coordinator.pushToDetail(model: model, subInfoModel: subInfoModel)
+    }
+    
+    func openSettings() {
+        self.coordinator.openSettings()
     }
 }
