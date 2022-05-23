@@ -16,7 +16,7 @@
 		B9094F14283B072900C2F91E /* WeatherAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9094F13283B072900C2F91E /* WeatherAppUITests.swift */; };
 		B9094F16283B072900C2F91E /* WeatherAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9094F15283B072900C2F91E /* WeatherAppUITestsLaunchTests.swift */; };
 		B9094F66283B1AB200C2F91E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9094F27283B1AB100C2F91E /* HomeViewModel.swift */; };
-		B9094F67283B1AB200C2F91E /* HomeViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9094F29283B1AB100C2F91E /* HomeViewCoordinator.swift */; };
+		B9094F67283B1AB200C2F91E /* WeatherForcastCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9094F29283B1AB100C2F91E /* WeatherForcastCoordinator.swift */; };
 		B9094F68283B1AB200C2F91E /* WeatherForcastSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9094F2B283B1AB100C2F91E /* WeatherForcastSection.swift */; };
 		B9094F69283B1AB200C2F91E /* WeatherForcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9094F2C283B1AB100C2F91E /* WeatherForcastViewController.swift */; };
 		B9094F74283B1AB200C2F91E /* WeeklyForecastCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9094F41283B1AB100C2F91E /* WeeklyForecastCollectionViewCell.xib */; };
@@ -78,7 +78,7 @@
 		B9094F13283B072900C2F91E /* WeatherAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppUITests.swift; sourceTree = "<group>"; };
 		B9094F15283B072900C2F91E /* WeatherAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B9094F27283B1AB100C2F91E /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		B9094F29283B1AB100C2F91E /* HomeViewCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewCoordinator.swift; sourceTree = "<group>"; };
+		B9094F29283B1AB100C2F91E /* WeatherForcastCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherForcastCoordinator.swift; sourceTree = "<group>"; };
 		B9094F2B283B1AB100C2F91E /* WeatherForcastSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherForcastSection.swift; sourceTree = "<group>"; };
 		B9094F2C283B1AB100C2F91E /* WeatherForcastViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherForcastViewController.swift; sourceTree = "<group>"; };
 		B9094F41283B1AB100C2F91E /* WeeklyForecastCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeeklyForecastCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -219,7 +219,7 @@
 		B9094F28283B1AB100C2F91E /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				B9094F29283B1AB100C2F91E /* HomeViewCoordinator.swift */,
+				B9094F29283B1AB100C2F91E /* WeatherForcastCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -506,7 +506,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9094F67283B1AB200C2F91E /* HomeViewCoordinator.swift in Sources */,
+				B9094F67283B1AB200C2F91E /* WeatherForcastCoordinator.swift in Sources */,
 				B9094F7C283B1AB200C2F91E /* APIService+Helper.swift in Sources */,
 				B9094F8A283B1AB200C2F91E /* WeatherForecastModel.swift in Sources */,
 				B9094F98283B297500C2F91E /* UIView+NibView.swift in Sources */,

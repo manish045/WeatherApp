@@ -35,7 +35,7 @@ class WeatherForcastViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Marvel Characters"
+        title = "Weather Forcast"
         configureCollectionView()
         createSnapshot(weatherList: [])
         // Do any additional setup after loading the view.
