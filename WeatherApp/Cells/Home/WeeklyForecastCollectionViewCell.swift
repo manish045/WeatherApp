@@ -33,7 +33,7 @@ class WeeklyForecastCollectionViewCell: UICollectionViewCell {
 extension WeeklyForecastCollectionViewCell {
     
     static var heroCollectionSectionLayout:  NSCollectionLayoutSection {
-        let heightDimension = NSCollectionLayoutDimension.estimated(111)
+        let heightDimension = NSCollectionLayoutDimension.estimated(80)
 
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1),
