@@ -45,6 +45,7 @@
 		B9094F96283B297500C2F91E /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9094F92283B297500C2F91E /* NibView.swift */; };
 		B9094F97283B297500C2F91E /* UIView+NibRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9094F94283B297500C2F91E /* UIView+NibRepresentable.swift */; };
 		B9094F98283B297500C2F91E /* UIView+NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9094F95283B297500C2F91E /* UIView+NibView.swift */; };
+		B9094F9E283B2DFF00C2F91E /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9094F9D283B2DFF00C2F91E /* AppAppearance.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		B9094F92283B297500C2F91E /* NibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
 		B9094F94283B297500C2F91E /* UIView+NibRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+NibRepresentable.swift"; sourceTree = "<group>"; };
 		B9094F95283B297500C2F91E /* UIView+NibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+NibView.swift"; sourceTree = "<group>"; };
+		B9094F9D283B2DFF00C2F91E /* AppAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				B9094EF2283B072800C2F91E /* AppDelegate.swift */,
+				B9094F9D283B2DFF00C2F91E /* AppAppearance.swift */,
 				B9094EF4283B072800C2F91E /* SceneDelegate.swift */,
 				B9094EF8283B072800C2F91E /* Main.storyboard */,
 				B9094F5A283B1AB200C2F91E /* DiffableDataSource */,
@@ -525,6 +528,7 @@
 				B9094F69283B1AB200C2F91E /* WeatherForcastViewController.swift in Sources */,
 				B9094F78283B1AB200C2F91E /* MarvelServiceUtil.swift in Sources */,
 				B9094F87283B1AB200C2F91E /* LoadingCollectionCell.swift in Sources */,
+				B9094F9E283B2DFF00C2F91E /* AppAppearance.swift in Sources */,
 				B9094F79283B1AB200C2F91E /* APIService+URL.swift in Sources */,
 				B9094F7A283B1AB200C2F91E /* BaseModel+Helper.swift in Sources */,
 				B9094F7B283B1AB200C2F91E /* BaseModel.swift in Sources */,
