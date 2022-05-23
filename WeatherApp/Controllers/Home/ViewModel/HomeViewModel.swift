@@ -7,9 +7,10 @@
 
 import Foundation
 import Combine
+import CoreLocation
     
 protocol WeatherForcastModelInput {
-
+    func fetchWeatherForcast()
 }
 
 protocol WeatherForcastViewModelOutput {
@@ -28,4 +29,24 @@ final class DefaultWeatherForcastViewModel: WeatherForcastViewModel {
         self.coordinator = coordinator
     }
 
+    func fetchWeatherForcast() {
+        self.fetchCurrentCoordinates { lat, long in
+    
+        }
+    }
+    
+    private func fetchCurrentCoordinates(completion: @escaping(Double, Double) -> Void) {
+        LocationManager.shared.getLocation { (location: CLLocation?, error:NSError?) in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            guard let location = location else {
+                return
+            }
+    
+            print("Latitude: \(location.coordinate.latitude) Longitude: \(location.coordinate.longitude)")
+            completion(location.coordinate.latitude, (location.coordinate.longitude))
+        }
+    }
 }

@@ -46,6 +46,7 @@
 		B9094F97283B297500C2F91E /* UIView+NibRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9094F94283B297500C2F91E /* UIView+NibRepresentable.swift */; };
 		B9094F98283B297500C2F91E /* UIView+NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9094F95283B297500C2F91E /* UIView+NibView.swift */; };
 		B9094F9E283B2DFF00C2F91E /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9094F9D283B2DFF00C2F91E /* AppAppearance.swift */; };
+		B9094FA7283B3D8100C2F91E /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9094FA6283B3D8100C2F91E /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,7 @@
 		B9094F94283B297500C2F91E /* UIView+NibRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+NibRepresentable.swift"; sourceTree = "<group>"; };
 		B9094F95283B297500C2F91E /* UIView+NibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+NibView.swift"; sourceTree = "<group>"; };
 		B9094F9D283B2DFF00C2F91E /* AppAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
+		B9094FA6283B3D8100C2F91E /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,6 +254,7 @@
 		B9094F43283B1AB200C2F91E /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				B9094FA5283B3D7700C2F91E /* LocationManager */,
 				B9094F44283B1AB200C2F91E /* UIImageView+ImageLoader.swift */,
 				B9094F46283B1AB200C2F91E /* WebService */,
 				B9094F4E283B1AB200C2F91E /* Extenstion */,
@@ -381,6 +384,14 @@
 				B9094EFD283B072900C2F91E /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		B9094FA5283B3D7700C2F91E /* LocationManager */ = {
+			isa = PBXGroup;
+			children = (
+				B9094FA6283B3D8100C2F91E /* LocationManager.swift */,
+			);
+			path = LocationManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -531,6 +542,7 @@
 				B9094F98283B297500C2F91E /* UIView+NibView.swift in Sources */,
 				B9094F77283B1AB200C2F91E /* APIMarvelService.swift in Sources */,
 				B9094F96283B297500C2F91E /* NibView.swift in Sources */,
+				B9094FA7283B3D8100C2F91E /* LocationManager.swift in Sources */,
 				B9094F83283B1AB200C2F91E /* Utils.swift in Sources */,
 				B9094F68283B1AB200C2F91E /* WeatherForcastSection.swift in Sources */,
 				B9094EF3283B072800C2F91E /* AppDelegate.swift in Sources */,
