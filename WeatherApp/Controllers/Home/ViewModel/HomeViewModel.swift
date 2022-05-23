@@ -20,10 +20,10 @@ protocol WeatherForcastViewModel: WeatherForcastModelInput, WeatherForcastViewMo
 final class DefaultWeatherForcastViewModel: WeatherForcastViewModel {
     
     var apiService: APIMarvelService
-    var coordinator: HomeViewCoordinatorInput
+    var coordinator: WeatherForcastCoordinatorInput
     
     init(apiService: APIMarvelService = APIMarvelService.shared,
-         coordinator: HomeViewCoordinatorInput) {
+         coordinator: WeatherForcastCoordinatorInput) {
         self.apiService = apiService
         self.coordinator = coordinator
     }

@@ -7,11 +7,11 @@
 
 import UIKit
 
-protocol HomeViewCoordinatorInput {
+protocol WeatherForcastCoordinatorInput {
 
 }
 
-class HomeViewCoordinator: Coordinator, HomeViewCoordinatorInput {
+class WeatherForcastCoordinator: Coordinator, WeatherForcastCoordinatorInput {
     
     var rootController: UIViewController?
     
