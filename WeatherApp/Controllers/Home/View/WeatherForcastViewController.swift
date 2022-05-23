@@ -51,6 +51,7 @@ class WeatherForcastViewController: UIViewController {
     
     private func configureCollectionView() {
         collectionView.registerNibCell(ofType: WeeklyForecastCollectionViewCell.self)
+        collectionView.delegate = self
     }
     
     private func addViewModelObservers() {
@@ -86,5 +87,12 @@ class WeatherForcastViewController: UIViewController {
             snapshot.appendItems([.loading(loadingItem)], toSection: .loading)
         }
         datasource.apply(snapshot)
+    }
+}
+
+extension WeatherForcastViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
     }
 }
