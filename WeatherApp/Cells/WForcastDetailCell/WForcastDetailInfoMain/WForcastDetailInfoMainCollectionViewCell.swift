@@ -22,6 +22,21 @@ class WForcastDetailInfoMainCollectionViewCell: UICollectionViewCell {
         // Initialization code\
     }
 
+    var model: WeatherDetailInfoModel! {
+        didSet {
+            cityLabel?.text = model.cityName
+            dateLabel?.text = model.dateTime
+            tempLabel?.text = TemperatureUnitManager.shared.getCurrentTemp(temp: model.temp ?? 0)
+            lowTempLabel?.text = "L: \(TemperatureUnitManager.shared.getCurrentTemp(temp: model.lowTemp ?? 0))"
+            highTempLabel?.text = "H: \(TemperatureUnitManager.shared.getCurrentTemp(temp: model.highTemp ?? 0))"
+            tempDescLabel?.text = model.weather?.weatherDescription
+            if let icon = model.weather?.icon {
+                tempIconImageView?.image = UIImage(named: icon)
+            }else {
+                tempIconImageView?.image = nil
+            }
+        }
+    }
 }
 
 extension WForcastDetailInfoMainCollectionViewCell {

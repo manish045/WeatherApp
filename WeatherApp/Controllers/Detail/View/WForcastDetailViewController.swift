@@ -22,9 +22,11 @@ class WForcastDetailViewController: UIViewController {
         switch item {
         case .infoItem(let model):
             let cell = collectionView.dequeueCell(WForcastDetailInfoMainCollectionViewCell.self, indexPath: indexPath)
+            cell.model = model
             return cell
-        case .infoChunksItem(_):
+        case .infoChunksItem(let model):
             let cell = collectionView.dequeueCell(WForcastDetailCoFactorCollectionViewCell.self, indexPath: indexPath)
+            cell.model = model
             return cell
         }
     } supplementaryViewProvider: {
@@ -37,24 +39,26 @@ class WForcastDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
         title = "Weather Detail"
         configureCollectionView()
+        self.createSnapshot(weatherMainInfo: viewModel.subInfoModel, infoModel: viewModel.infoModel)
     }
     
     private func configureCollectionView() {
         collectionView.registerNibCell(ofType: WForcastDetailInfoMainCollectionViewCell.self)
-        collectionView.registerHeader(ofType: WForcastDetailCoFactorCollectionViewCell.self)
+        collectionView.registerNibCell(ofType: WForcastDetailCoFactorCollectionViewCell.self)
     }
     
     
-    func createSnapshot(weatherList: WeatherForecastModel) {
+    func createSnapshot(weatherMainInfo: WeatherDetailInfoModel, infoModel: [WeatherInfo]) {
         var snapshot = datasource.snapshot()
         snapshot.deleteAllItems()
         snapshot.appendSections([.sections(.mainInfo)])
         
-        let mainWeatherDetailItems: ItemHolder<WForcastDetailItem> = .items(.infoItem(weatherList))
+        let mainWeatherDetailItems: ItemHolder<WForcastDetailItem> = .items(.infoItem(weatherMainInfo))
         snapshot.appendItems([mainWeatherDetailItems], toSection: .sections(.mainInfo))
         
-        let cofactorWeatherDetailItems: ItemHolder<WForcastDetailItem> = .items(.infoChunksItem(weatherList))
-        snapshot.appendItems([cofactorWeatherDetailItems], toSection: .sections(.coFactors))
+        snapshot.appendSections([.sections(.coFactors)])
+        let cofactorWeatherDetailItems: [ItemHolder<WForcastDetailItem>] = infoModel.map({.items(.infoChunksItem($0))})
+        snapshot.appendItems(cofactorWeatherDetailItems, toSection: .sections(.coFactors))
         
         datasource.apply(snapshot)
     }

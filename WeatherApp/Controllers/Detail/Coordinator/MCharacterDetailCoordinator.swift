@@ -16,16 +16,18 @@ class MCharacterDetailCoordinator: Coordinator {
     
     init() {}
     
-    func makeModule(model: WeatherForecastModel) -> UIViewController {
-        let vc = createViewController(model: model)
+    func makeModule(model: WeatherForecastModel, subInfoModel: WeatherDetailInfoModel) -> UIViewController {
+        let vc = createViewController(model: model,
+                                      subInfoModel: subInfoModel)
         rootController = vc
         return vc
     }
     
-    private func createViewController(model: WeatherForecastModel) -> WForcastDetailViewController {
+    private func createViewController(model: WeatherForecastModel, subInfoModel: WeatherDetailInfoModel) -> WForcastDetailViewController {
         // initializing view controller
         let view = WForcastDetailViewController.instantiateFromStoryboard()
-        let viewModel = DefaultWForcastDetailViewModel(weatherForecastModel: model)
+        let viewModel = DefaultWForcastDetailViewModel(weatherForecastModel: model,
+                                                       subInfoModel: subInfoModel)
         view.viewModel = viewModel
         return view
     }

@@ -19,6 +19,11 @@ extension UIView {
 public enum UnitKey: String, Codable {
     case Fahrenheit = "I"
     case Celcius = "M"
+    case WindSpeed = "m/s"
+    case Visibility = "KM"
+    case Pressure = "mb"
+    case Percent = "%"
+    case Precipitation = "mm"
     
     var title: String{
         switch self {
@@ -26,6 +31,8 @@ public enum UnitKey: String, Codable {
             return "F"
         case .Celcius:
             return "C"
+        default:
+            return self.rawValue
         }
     }
     

@@ -44,5 +44,42 @@
             </objects>
             <point key="canvasLocation" x="20" y="82"/>
         </scene>
+        <!--Forcast Detail View Controller-->
+        <scene sceneID="blf-Wz-JdU">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pgf-E7-0Eu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="WForcastDetailViewController" id="cwr-n5-rio" customClass="WForcastDetailViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kq4-H5-gW3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dWo-q1-6eT">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="IoH-Hj-Sl5">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="fib-rv-QBb"/>
+                        <color key="backgroundColor" red="0.46274509800000002" green="0.83921568629999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="fib-rv-QBb" firstAttribute="trailing" secondItem="dWo-q1-6eT" secondAttribute="trailing" id="82c-7d-lT0"/>
+                            <constraint firstItem="dWo-q1-6eT" firstAttribute="leading" secondItem="fib-rv-QBb" secondAttribute="leading" id="ArG-tn-VSc"/>
+                            <constraint firstItem="dWo-q1-6eT" firstAttribute="top" secondItem="fib-rv-QBb" secondAttribute="top" id="DWX-eP-WA2"/>
+                            <constraint firstItem="fib-rv-QBb" firstAttribute="bottom" secondItem="dWo-q1-6eT" secondAttribute="bottom" id="oUX-rJ-xbj"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="dWo-q1-6eT" id="h2x-Hb-Y3V"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="791" y="90"/>
+        </scene>
     </scenes>
 </document>

@@ -95,6 +95,7 @@
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="OCg-C3-YFe"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="iK9-U4-ytE" secondAttribute="trailing" constant="16" id="GSM-RW-SPz"/>
                 <constraint firstItem="iK9-U4-ytE" firstAttribute="top" secondItem="cxK-p6-tuM" secondAttribute="top" constant="16" id="Of1-hc-CVX"/>
@@ -103,13 +104,13 @@
             </constraints>
             <size key="customSize" width="318" height="191"/>
             <connections>
-                <outlet property="cityLbl" destination="KyO-fF-Uai" id="bjK-oZ-CVx"/>
-                <outlet property="dateLbl" destination="pyG-w1-drU" id="tsE-T5-COx"/>
-                <outlet property="highTempLbl" destination="awr-LS-VIb" id="8ZM-em-gUo"/>
-                <outlet property="lowTempLbl" destination="hax-OH-W3X" id="XRw-8N-Ver"/>
-                <outlet property="tempDescLbl" destination="aG1-nJ-xal" id="026-Ql-aqM"/>
-                <outlet property="tempIconImgView" destination="5R2-wf-mpA" id="IZp-A7-qCd"/>
-                <outlet property="tempLbl" destination="M4s-SB-PvX" id="y4W-8W-iRo"/>
+                <outlet property="cityLabel" destination="KyO-fF-Uai" id="1J1-Fs-bey"/>
+                <outlet property="dateLabel" destination="pyG-w1-drU" id="aZm-9f-VFW"/>
+                <outlet property="highTempLabel" destination="awr-LS-VIb" id="imo-kL-zm1"/>
+                <outlet property="lowTempLabel" destination="hax-OH-W3X" id="YZK-hn-p63"/>
+                <outlet property="tempDescLabel" destination="aG1-nJ-xal" id="aHV-NI-ZKJ"/>
+                <outlet property="tempIconImageView" destination="5R2-wf-mpA" id="opE-po-RMW"/>
+                <outlet property="tempLabel" destination="M4s-SB-PvX" id="w8g-rU-rfZ"/>
             </connections>
             <point key="canvasLocation" x="331.8840579710145" y="130.24553571428572"/>
         </collectionViewCell>

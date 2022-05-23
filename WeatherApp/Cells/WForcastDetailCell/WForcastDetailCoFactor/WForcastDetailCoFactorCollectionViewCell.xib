@@ -75,9 +75,9 @@
             <size key="customSize" width="188" height="140"/>
             <connections>
                 <outlet property="bagView" destination="rlv-A6-6eF" id="nmP-yc-pvW"/>
-                <outlet property="iconImgView" destination="8Om-yA-QaZ" id="BYh-ca-rJR"/>
-                <outlet property="titleLbl" destination="CYD-Ow-0d2" id="Qsg-5V-X8q"/>
-                <outlet property="valueLbl" destination="Pyv-pF-R4F" id="h12-AG-nFU"/>
+                <outlet property="iconImagView" destination="8Om-yA-QaZ" id="BYh-ca-rJR"/>
+                <outlet property="titleLabel" destination="CYD-Ow-0d2" id="Qsg-5V-X8q"/>
+                <outlet property="valueLabel" destination="Pyv-pF-R4F" id="h12-AG-nFU"/>
             </connections>
             <point key="canvasLocation" x="237.68115942028987" y="113.83928571428571"/>
         </collectionViewCell>
