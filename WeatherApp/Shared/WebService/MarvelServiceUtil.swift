@@ -10,25 +10,19 @@ import CryptoKit
 
 
 enum KeyString: String {
-    case publicKey
-    case privateKey
+    case testingKey
 }
 
 class MSUtils {
     
     static func buildServiceRequestUrl (baseUrl: String, params: [String : String]? = nil) -> String? {
         if var urlComponents = URLComponents(string: baseUrl) {
-            let ts = "\(Int((Date().timeIntervalSince1970 * 1000.0).rounded()))"
-            
-            guard let publicKey = getAPIKeys()[KeyString.publicKey.rawValue] as? String, let privateKey = getAPIKeys()[KeyString.privateKey.rawValue] as? String else {return nil}
-            
-            let privateKeyMd5 = MD5Hex(string: "\(ts)\(privateKey)\(publicKey)")
-            
             //addd auth params
+                        
+            guard let testingKey = getAPIKeys()[KeyString.testingKey.rawValue] as? String else {return nil}
+            
             var requestParams = params ?? [String : String]()
-            requestParams["ts"] = ts
-            requestParams["apikey"] = publicKey
-            requestParams["hash"] = privateKeyMd5
+            requestParams["apikey"] = testingKey
             
             //build query string
             var queryItems = [URLQueryItem]()
@@ -48,27 +42,14 @@ class MSUtils {
 
     //MARK:- Get Keys from Marvel Plist file
     static func getAPIKeys() -> [String: Any] {
-        if let path = Bundle.main.path(forResource: "MarvelPlist", ofType: "plist") {
+        if let path = Bundle.main.path(forResource: "WeatherInfo", ofType: "plist") {
             let plist = NSDictionary(contentsOfFile: path) ?? ["":""]
-            let publicKey = plist[KeyString.publicKey.rawValue] as! String
-            let privateKey = plist[KeyString.privateKey.rawValue] as! String
-            let dict = [KeyString.publicKey.rawValue: publicKey, KeyString.privateKey.rawValue: privateKey]
+            let testingKey = plist[KeyString.testingKey.rawValue] as! String
+            let dict = [KeyString.testingKey.rawValue: testingKey]
             return dict
             
         }
         return ["": ""]
-    }
-    
-    /*
-     There are two steps:
-     1. Create md5 data from a string
-     2. Covert the md5 data to a hex string
-     */
-    static func MD5Hex(string: String) -> String {
-        let digest = Insecure.MD5.hash(data: string.data(using: .utf8) ?? Data())
-        return digest.map {
-                String(format: "%02hhx", $0)
-            }.joined()
     }
     
     static func get(url: String, onResult: @escaping (Data?) -> Void){
