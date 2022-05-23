@@ -38,6 +38,7 @@ class WeatherForcastViewController: UIViewController {
         title = "Weather Forcast"
         configureCollectionView()
         createSnapshot(weatherList: [])
+        viewModel.fetchWeatherForcast()
         // Do any additional setup after loading the view.
     }
     

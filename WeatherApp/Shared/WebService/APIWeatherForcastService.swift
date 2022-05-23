@@ -1,5 +1,5 @@
 //
-//  APIService.swift
+//  APIWeatherForcastService.swift
 //  WeatherApp
 //
 //  Created by Manish Tamta on 23/05/2022.
@@ -20,9 +20,9 @@ protocol PerformRequest {
                                       completion: @escaping (APIResult<T, APIError>) -> Void)
 }
 
-class APIMarvelService: SessionManager, PerformRequest {
+class APIWeatherForcastService: SessionManager, PerformRequest {
     
-    static let shared = APIMarvelService()
+    static let shared = APIWeatherForcastService()
     var network: Network
 
     init(network: Network = Network()) {
@@ -63,7 +63,7 @@ class APIMarvelService: SessionManager, PerformRequest {
             return
         }
         
-        let url = APIMarvelService.URL(endPoint)
+        let url = APIWeatherForcastService.URL(endPoint)
         guard let finalUrl = MSUtils.buildServiceRequestUrl(baseUrl: url) else{
             return
         }

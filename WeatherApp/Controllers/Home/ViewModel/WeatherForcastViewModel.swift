@@ -1,5 +1,5 @@
 //
-//  HomeViewModel.swift
+//  WeatherForcastViewModel.swift
 //  WeatherApp
 //
 //  Created by Manish Tamta on 23/05/2022.
@@ -14,24 +14,35 @@ protocol WeatherForcastModelInput {
 }
 
 protocol WeatherForcastViewModelOutput {
+    
 }
 
 protocol WeatherForcastViewModel: WeatherForcastModelInput, WeatherForcastViewModelOutput {}
 
 final class DefaultWeatherForcastViewModel: WeatherForcastViewModel {
     
-    var apiService: APIMarvelService
+    var apiService: APIWeatherForcastService
     var coordinator: WeatherForcastCoordinatorInput
     
-    init(apiService: APIMarvelService = APIMarvelService.shared,
+    init(apiService: APIWeatherForcastService = APIWeatherForcastService.shared,
          coordinator: WeatherForcastCoordinatorInput) {
         self.apiService = apiService
         self.coordinator = coordinator
     }
 
     func fetchWeatherForcast() {
-        self.fetchCurrentCoordinates { lat, long in
-    
+        self.fetchCurrentCoordinates { [weak self] lat, long in
+            guard let self = self else {return}
+            self.apiService.performRequest(endPoint: .dailyForecast, parameters: self.createParametersToFetchForcast(latitude: lat, longitude: long)) { [weak self] (result: APIResult<WeatherDataModel, APIError>) in
+                switch result {
+                case .success(let model):
+                    print(model)
+                case .error(let error):
+                    guard let self = self else {return}
+                    print(error)
+                    break
+                }
+            }
         }
     }
     
@@ -48,5 +59,17 @@ final class DefaultWeatherForcastViewModel: WeatherForcastViewModel {
             print("Latitude: \(location.coordinate.latitude) Longitude: \(location.coordinate.longitude)")
             completion(location.coordinate.latitude, (location.coordinate.longitude))
         }
+    }
+    
+    private func createParametersToFetchForcast(latitude: Double, longitude: Double) -> [String : Any] {
+        let daysNumber = 16
+        let unit = TemperatureUnitManager.shared.generalUnit.rawValue
+        
+        return [
+            "days": daysNumber,
+            "lat": latitude,
+            "lon": longitude,
+            "units": unit,
+        ]
     }
 }

@@ -10,28 +10,28 @@ import Alamofire
 
 enum APIEnvironment {
     case staging
+    case development
     case production
     
     var baseURL: String {
         switch self {
         case .staging:
-            return "https://gateway.marvel.com:443/"
+            return "https://api.weatherbit.io/v2.0/"
+        case .development:
+            return "https://api.weatherbit.io/v2.0/"
         case .production:
-            return ""
+            return "https://api.weatherbit.io/v2.0/"
         }
     }
 }
 
 enum EndPoints {
-    case characters
-    case characterComics(id: Int)
+    case dailyForecast
     
     var url: String {
         switch self {
-        case .characters:
-            return "v1/public/characters"
-        case .characterComics(let id):
-            return "v1/public/characters/\(id)/comics"
+        case .dailyForecast:
+            return "forecast/daily"
         }
     }
     
@@ -43,7 +43,7 @@ enum EndPoints {
     }
 }
 
-extension APIMarvelService {
+extension APIWeatherForcastService {
     struct URLString {
         private static let environment = APIEnvironment.staging
         static var base: String { environment.baseURL }

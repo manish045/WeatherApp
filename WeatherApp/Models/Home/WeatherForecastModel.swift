@@ -9,6 +9,15 @@ import Foundation
 
 typealias WeatherForecastList = [WeatherForecastModel]
 
+// MARK: - WeatherForecastModel
+struct WeatherDataModel: BaseModel {
+    let data: WeatherForecastList
+
+    enum CodingKeys: String, CodingKey {
+        case data
+    }
+}
+
 // MARK: - Datum
 struct WeatherForecastModel: Hashable ,BaseModel {
     
