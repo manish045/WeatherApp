@@ -8,13 +8,13 @@
 import UIKit
 
 enum WForcastDetailSection: Int {
-    case mainInfo
+    case mainInfo = 0
     case coFactors
 }
 
 enum WForcastDetailItem: Hashable {
-    case infoItem(WeatherForecastModel)
-    case infoChunksItem(WeatherForecastModel)
+    case infoItem(WeatherDetailInfoModel)
+    case infoChunksItem(WeatherInfo)
 }
 
 extension WForcastDetailSection: Sectionable {

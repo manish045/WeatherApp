@@ -30,6 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         /// 4. Set the root view controller of the window with your view controller
         window.rootViewController = navigation
+        coordinator?.start(from: viewController)
         
         /// 5. Set the window and call makeKeyAndVisible()
         self.window = window

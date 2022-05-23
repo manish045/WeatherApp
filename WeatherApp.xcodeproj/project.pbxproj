@@ -56,6 +56,7 @@
 		B9094FC6283B59C300C2F91E /* WForcastDetailInfoMainCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9094FC0283B59C300C2F91E /* WForcastDetailInfoMainCollectionViewCell.xib */; };
 		B9094FCA283B5BD700C2F91E /* WForcastDetailCoFactorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9094FC8283B5BD700C2F91E /* WForcastDetailCoFactorCollectionViewCell.swift */; };
 		B9094FCB283B5BD700C2F91E /* WForcastDetailCoFactorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9094FC9283B5BD700C2F91E /* WForcastDetailCoFactorCollectionViewCell.xib */; };
+		B9094FCE283B61EE00C2F91E /* WForeCastDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9094FCD283B61EE00C2F91E /* WForeCastDetailModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +128,7 @@
 		B9094FC0283B59C300C2F91E /* WForcastDetailInfoMainCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WForcastDetailInfoMainCollectionViewCell.xib; sourceTree = "<group>"; };
 		B9094FC8283B5BD700C2F91E /* WForcastDetailCoFactorCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WForcastDetailCoFactorCollectionViewCell.swift; sourceTree = "<group>"; };
 		B9094FC9283B5BD700C2F91E /* WForcastDetailCoFactorCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WForcastDetailCoFactorCollectionViewCell.xib; sourceTree = "<group>"; };
+		B9094FCD283B61EE00C2F91E /* WForeCastDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WForeCastDetailModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -365,6 +367,7 @@
 		B9094F61283B1AB200C2F91E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B9094FCC283B619C00C2F91E /* Detail */,
 				B9094F62283B1AB200C2F91E /* Home */,
 			);
 			path = Models;
@@ -483,6 +486,14 @@
 				B9094FC0283B59C300C2F91E /* WForcastDetailInfoMainCollectionViewCell.xib */,
 			);
 			path = WForcastDetailInfoMain;
+			sourceTree = "<group>";
+		};
+		B9094FCC283B619C00C2F91E /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				B9094FCD283B61EE00C2F91E /* WForeCastDetailModel.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -647,6 +658,7 @@
 				B9094FB5283B550C00C2F91E /* WForcastDetailSection.swift in Sources */,
 				B9094F89283B1AB200C2F91E /* DiffableDatasource.swift in Sources */,
 				B9094F80283B1AB200C2F91E /* Coordinator.swift in Sources */,
+				B9094FCE283B61EE00C2F91E /* WForeCastDetailModel.swift in Sources */,
 				B9094F66283B1AB200C2F91E /* WeatherForcastViewModel.swift in Sources */,
 				B9094F7E283B1AB200C2F91E /* UICollectionView+Extension.swift in Sources */,
 				B9094FAA283B4FA000C2F91E /* DateHelper.swift in Sources */,

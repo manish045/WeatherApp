@@ -11,6 +11,7 @@ import CoreLocation
     
 protocol WeatherForcastModelInput {
     func fetchWeatherForcast()
+    func pushToDetailScreen(model: WeatherForecastModel)
 }
 
 protocol WeatherForcastViewModelOutput {
@@ -31,6 +32,7 @@ final class DefaultWeatherForcastViewModel: WeatherForcastViewModel {
     
     private var apiService: APIWeatherForcastService
     private var coordinator: WeatherForcastCoordinatorInput
+    private var weatherDataModel: WeatherDataModel?
     
     init(apiService: APIWeatherForcastService = APIWeatherForcastService.shared,
          coordinator: WeatherForcastCoordinatorInput) {
@@ -45,8 +47,9 @@ final class DefaultWeatherForcastViewModel: WeatherForcastViewModel {
                 switch result {
                 case .success(let model):
                     guard let self = self else {return}
+                    self.weatherDataModel = model
                     let weatherDataArray = model.data
-                    self.loadDataSource.send(weatherDataArray)
+                    self.loadDataSource.send(weatherDataArray ?? [])
                 case .error(let error):
                     guard let self = self else {return}
                     self.didGetError.send(error)
@@ -79,5 +82,17 @@ final class DefaultWeatherForcastViewModel: WeatherForcastViewModel {
             "lon": longitude,
             "units": unit,
         ]
+    }
+    
+    func pushToDetailScreen(model: WeatherForecastModel) {
+        var model = model
+        guard let weatherDataModel = weatherDataModel else {return}
+        var subInfoModel = WeatherDetailInfoModel(dateTime: model.dateInString,
+                                                            cityName: weatherDataModel.cityName,
+                                                            temp: model.temp,
+                                                            lowTemp: model.lowTemp,
+                                                            highTemp: model.highTemp,
+                                                            weather: model.weather)
+        self.coordinator.pushToDetail(model: model, subInfoModel: subInfoModel)
     }
 }

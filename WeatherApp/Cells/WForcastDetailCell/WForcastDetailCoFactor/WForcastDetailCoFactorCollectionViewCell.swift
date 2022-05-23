@@ -9,9 +9,9 @@ import UIKit
 
 class WForcastDetailCoFactorCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var titleLbl: UILabel!
-    @IBOutlet weak var valueLbl: UILabel!
-    @IBOutlet weak var iconImgView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var valueLabel: UILabel!
+    @IBOutlet weak var iconImagView: UIImageView!
     @IBOutlet weak var bagView: UIView!
     
     //MARK: Render data
@@ -19,6 +19,18 @@ class WForcastDetailCoFactorCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    var model: WeatherInfo! {
+        didSet {
+            titleLabel?.text = model?.title
+            valueLabel?.text = model?.value
+            if let icon = model?.icon {
+                iconImagView.image = UIImage(systemName: icon)
+            }else {
+                iconImagView.image = nil
+            }
+        }
     }
 }
 

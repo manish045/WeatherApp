@@ -77,6 +77,7 @@ class WeatherForcastViewController: UIViewController {
     func createSnapshot(weatherList: [WeatherForecastModel]) {
         var snapshot = datasource.snapshot()
         snapshot.deleteAllItems()
+       
         snapshot.appendSections([.sections(.characters)])
         let nowPlayingItems: [ItemHolder<TemperatureItem>] = weatherList.map{.items(.resultItem($0))}
         snapshot.appendItems(nowPlayingItems, toSection: .sections(.characters))
@@ -93,6 +94,9 @@ class WeatherForcastViewController: UIViewController {
 extension WeatherForcastViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        guard let cell = collectionView.cellForItem(at: indexPath) as? WeeklyForecastCollectionViewCell else {return}
+        if let model = cell.model {
+            self.viewModel.pushToDetailScreen(model: model)
+        }
     }
 }
