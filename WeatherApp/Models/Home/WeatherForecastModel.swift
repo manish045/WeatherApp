@@ -43,13 +43,22 @@ struct WeatherForecastModel: Hashable ,BaseModel {
         lhs.datetime == rhs.datetime &&
         lhs.temp == rhs.temp
     }
+    
+    lazy var dateInString: String = {
+        if let dateStr = datetime {
+            if let date = Date.init(fromString: dateStr, format: .isoDate){
+                return date.toString(format: .custom("EEE\ndd MM"))
+            }
+        }
+        return datetime ?? ""
+    }()
 }
 
 // MARK: - Weather
 struct Weather: Codable {
-    let icon: String
-    let code: Int
-    let weatherDescription: String
+    let icon: String?
+    let code: Int?
+    let weatherDescription: String?
 
     enum CodingKeys: String, CodingKey {
         case icon, code

@@ -16,12 +16,14 @@ class WeatherForcastViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     private let scheduler: SchedulerContext = SchedulerContextProvider.provide()
+    private var dispose = Set<AnyCancellable>()
     
     private lazy var datasource = DiffableDatasource<WeatherForcastSection, TemperatureItem>(collectionView: collectionView!, scheduler: scheduler)
     { [unowned self] (collectionView, indexPath, item) -> UICollectionViewCell? in
         switch item {
         case .resultItem(let model):
             let cell = collectionView.dequeueCell(WeeklyForecastCollectionViewCell.self, indexPath: indexPath)
+            cell.model = model
             return cell
         case .loading(let loadingItem):
             let cell = collectionView.dequeueCell(LoadingCollectionCell.self, indexPath: indexPath)
@@ -37,6 +39,7 @@ class WeatherForcastViewController: UIViewController {
         super.viewDidLoad()
         title = "Weather Forcast"
         configureCollectionView()
+        addViewModelObservers()
         createSnapshot(weatherList: [])
         viewModel.fetchWeatherForcast()
         // Do any additional setup after loading the view.
@@ -48,6 +51,26 @@ class WeatherForcastViewController: UIViewController {
     
     private func configureCollectionView() {
         collectionView.registerNibCell(ofType: WeeklyForecastCollectionViewCell.self)
+    }
+    
+    private func addViewModelObservers() {
+        viewModel.loadDataSource
+            .receive(on: scheduler.ui)
+            .sink { [weak self] weatherList in
+                guard let self = self else {return}
+                self.state = .completed
+                self.createSnapshot(weatherList: weatherList)
+            }
+            .store(in: &dispose)
+        
+        viewModel.didGetError
+            .receive(on: scheduler.ui)
+            .sink { [weak self] error in
+                guard let self = self else {return}
+                self.state = .completed
+                self.createSnapshot(weatherList: [])
+            }
+            .store(in: &dispose)
     }
     
     func createSnapshot(weatherList: [WeatherForecastModel]) {

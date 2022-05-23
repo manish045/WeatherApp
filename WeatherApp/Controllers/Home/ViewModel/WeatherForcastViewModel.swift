@@ -14,15 +14,23 @@ protocol WeatherForcastModelInput {
 }
 
 protocol WeatherForcastViewModelOutput {
-    
+    var loadDataSource: PassthroughSubject<WeatherForecastList, Never> { get}
+    var didGetError: PassthroughSubject<APIError, Never> {get}
 }
 
 protocol WeatherForcastViewModel: WeatherForcastModelInput, WeatherForcastViewModelOutput {}
 
 final class DefaultWeatherForcastViewModel: WeatherForcastViewModel {
+
+    //load data from server
+    var loadDataSource = PassthroughSubject<WeatherForecastList, Never>()
+   
+    // notifies for any error
+    var didGetError = PassthroughSubject<APIError, Never>()
     
-    var apiService: APIWeatherForcastService
-    var coordinator: WeatherForcastCoordinatorInput
+    
+    private var apiService: APIWeatherForcastService
+    private var coordinator: WeatherForcastCoordinatorInput
     
     init(apiService: APIWeatherForcastService = APIWeatherForcastService.shared,
          coordinator: WeatherForcastCoordinatorInput) {
@@ -36,10 +44,12 @@ final class DefaultWeatherForcastViewModel: WeatherForcastViewModel {
             self.apiService.performRequest(endPoint: .dailyForecast, parameters: self.createParametersToFetchForcast(latitude: lat, longitude: long)) { [weak self] (result: APIResult<WeatherDataModel, APIError>) in
                 switch result {
                 case .success(let model):
-                    print(model)
+                    guard let self = self else {return}
+                    let weatherDataArray = model.data
+                    self.loadDataSource.send(weatherDataArray)
                 case .error(let error):
                     guard let self = self else {return}
-                    print(error)
+                    self.didGetError.send(error)
                     break
                 }
             }
@@ -47,16 +57,14 @@ final class DefaultWeatherForcastViewModel: WeatherForcastViewModel {
     }
     
     private func fetchCurrentCoordinates(completion: @escaping(Double, Double) -> Void) {
-        LocationManager.shared.getLocation { (location: CLLocation?, error:NSError?) in
+        LocationManager.shared.getLocation { [weak self] (location: CLLocation?, error:NSError?) in
             if let error = error {
                 print(error.localizedDescription)
                 return
             }
             guard let location = location else {
                 return
-            }
-    
-            print("Latitude: \(location.coordinate.latitude) Longitude: \(location.coordinate.longitude)")
+            }    
             completion(location.coordinate.latitude, (location.coordinate.longitude))
         }
     }

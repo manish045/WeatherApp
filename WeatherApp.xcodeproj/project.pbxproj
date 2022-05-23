@@ -47,6 +47,7 @@
 		B9094F98283B297500C2F91E /* UIView+NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9094F95283B297500C2F91E /* UIView+NibView.swift */; };
 		B9094F9E283B2DFF00C2F91E /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9094F9D283B2DFF00C2F91E /* AppAppearance.swift */; };
 		B9094FA7283B3D8100C2F91E /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9094FA6283B3D8100C2F91E /* LocationManager.swift */; };
+		B9094FAA283B4FA000C2F91E /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9094FA9283B4FA000C2F91E /* DateHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,7 @@
 		B9094F95283B297500C2F91E /* UIView+NibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+NibView.swift"; sourceTree = "<group>"; };
 		B9094F9D283B2DFF00C2F91E /* AppAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
 		B9094FA6283B3D8100C2F91E /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		B9094FA9283B4FA000C2F91E /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -296,6 +298,7 @@
 		B9094F4E283B1AB200C2F91E /* Extenstion */ = {
 			isa = PBXGroup;
 			children = (
+				B9094FA8283B4F9300C2F91E /* DateHelper */,
 				B9094F92283B297500C2F91E /* NibView.swift */,
 				B9094F93283B297500C2F91E /* UIKit */,
 				B9094F95283B297500C2F91E /* UIView+NibView.swift */,
@@ -392,6 +395,14 @@
 				B9094FA6283B3D8100C2F91E /* LocationManager.swift */,
 			);
 			path = LocationManager;
+			sourceTree = "<group>";
+		};
+		B9094FA8283B4F9300C2F91E /* DateHelper */ = {
+			isa = PBXGroup;
+			children = (
+				B9094FA9283B4FA000C2F91E /* DateHelper.swift */,
+			);
+			path = DateHelper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -551,6 +562,7 @@
 				B9094F80283B1AB200C2F91E /* Coordinator.swift in Sources */,
 				B9094F66283B1AB200C2F91E /* WeatherForcastViewModel.swift in Sources */,
 				B9094F7E283B1AB200C2F91E /* UICollectionView+Extension.swift in Sources */,
+				B9094FAA283B4FA000C2F91E /* DateHelper.swift in Sources */,
 				B9094EF5283B072800C2F91E /* SceneDelegate.swift in Sources */,
 				B9094F75283B1AB200C2F91E /* WeeklyForecastCollectionViewCell.swift in Sources */,
 				B9094F69283B1AB200C2F91E /* WeatherForcastViewController.swift in Sources */,

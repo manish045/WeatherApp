@@ -10,19 +10,30 @@ import UIKit
 class WeeklyForecastCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var tempLable: UILabel!
+    @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var tempDescriptionLabel: UILabel!
     @IBOutlet weak var tempIconImageView: UIImageView!
     
     override class func awakeFromNib() {
         
     }
+    
+    var model: WeatherForecastModel! {
+        didSet {
+            dateLabel.text = model.dateInString
+            tempLabel.text = TemperatureUnitManager.shared.getCurrentTemp(temp: model.temp ?? 0)
+            tempDescriptionLabel.text = model.weather?.weatherDescription ?? ""
+            if let weather = model.weather, let icon = weather.icon {
+                tempIconImageView.image = UIImage(named: icon)
+            }
+        }
+    }
 }
 
 extension WeeklyForecastCollectionViewCell {
     
     static var heroCollectionSectionLayout:  NSCollectionLayoutSection {
-        let heightDimension = NSCollectionLayoutDimension.absolute(111)
+        let heightDimension = NSCollectionLayoutDimension.estimated(111)
 
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1),
