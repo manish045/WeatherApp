@@ -9,6 +9,7 @@ import UIKit
 
 protocol WeatherForcastCoordinatorInput {
     func pushToDetail(model: WeatherForecastModel, subInfoModel: WeatherDetailInfoModel)
+    func openSettings()
 }
 
 class WeatherForcastCoordinator: Coordinator, WeatherForcastCoordinatorInput {
@@ -33,5 +34,9 @@ class WeatherForcastCoordinator: Coordinator, WeatherForcastCoordinatorInput {
         let vc = MCharacterDetailCoordinator().makeModule(model: model,
                                                           subInfoModel: subInfoModel)
         rootController?.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func openSettings() {
+        
     }
 }
