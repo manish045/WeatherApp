@@ -50,7 +50,9 @@ final class DefaultWeatherForcastViewModel: WeatherForcastViewModel {
                 case .success(let model):
                     guard let self = self else {return}
                     self.weatherDataModel = model
-                    self.loadDataSource.send(model.data ?? [])
+                    let data = model.data ?? []
+                    self.loadDataSource.send(data)
+                    LocalNotificationManager.shared.scheduleNotifications(weatherList: data)
                 case .error(let error):
                     guard let self = self else {return}
                     self.didGetError.send(error)
