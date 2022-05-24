@@ -47,7 +47,6 @@
         <!--Forcast Detail View Controller-->
         <scene sceneID="blf-Wz-JdU">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Pgf-E7-0Eu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="WForcastDetailViewController" id="cwr-n5-rio" customClass="WForcastDetailViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kq4-H5-gW3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -78,8 +77,46 @@
                         <outlet property="collectionView" destination="dWo-q1-6eT" id="h2x-Hb-Y3V"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pgf-E7-0Eu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="791" y="90"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="lZb-Vn-grf">
+            <objects>
+                <viewController storyboardIdentifier="SettingsViewController" id="S47-L0-V32" customClass="SettingsViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xj8-1F-brf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DzV-Gi-Xx7">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Kl0-yQ-RlI">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Hhb-RH-wjR"/>
+                        <color key="backgroundColor" red="0.46274509800000002" green="0.83921568629999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Hhb-RH-wjR" firstAttribute="bottom" secondItem="DzV-Gi-Xx7" secondAttribute="bottom" id="CnK-33-WOl"/>
+                            <constraint firstItem="DzV-Gi-Xx7" firstAttribute="leading" secondItem="Hhb-RH-wjR" secondAttribute="leading" id="Sqg-Q1-GOt"/>
+                            <constraint firstItem="DzV-Gi-Xx7" firstAttribute="top" secondItem="Hhb-RH-wjR" secondAttribute="top" id="pGO-9v-4XV"/>
+                            <constraint firstItem="Hhb-RH-wjR" firstAttribute="trailing" secondItem="DzV-Gi-Xx7" secondAttribute="trailing" id="tq2-f4-ngm"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="DzV-Gi-Xx7" id="XHb-NX-HDJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mog-Ka-05E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1557" y="90"/>
         </scene>
     </scenes>
 </document>
