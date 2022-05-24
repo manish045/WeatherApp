@@ -98,7 +98,7 @@ class WeatherForcastViewController: UIViewController {
     }
     
     @objc private func openSettingPage() {
-        
+        self.viewModel.openSettings()
     }
 }
 

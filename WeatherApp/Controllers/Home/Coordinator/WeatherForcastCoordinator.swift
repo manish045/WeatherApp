@@ -37,6 +37,7 @@ class WeatherForcastCoordinator: Coordinator, WeatherForcastCoordinatorInput {
     }
     
     func openSettings() {
-        
+        let vc = SettingsViewCoordinator().makeModule()
+        rootController?.navigationController?.pushViewController(vc, animated: true)
     }
 }

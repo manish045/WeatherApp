@@ -57,6 +57,12 @@
 		B9094FCA283B5BD700C2F91E /* WForcastDetailCoFactorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9094FC8283B5BD700C2F91E /* WForcastDetailCoFactorCollectionViewCell.swift */; };
 		B9094FCB283B5BD700C2F91E /* WForcastDetailCoFactorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9094FC9283B5BD700C2F91E /* WForcastDetailCoFactorCollectionViewCell.xib */; };
 		B9094FCE283B61EE00C2F91E /* WForeCastDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9094FCD283B61EE00C2F91E /* WForeCastDetailModel.swift */; };
+		B90C2075283B9B6700AF8E91 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90C2074283B9B6700AF8E91 /* SettingsViewController.swift */; };
+		B90C2077283B9B7600AF8E91 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90C2076283B9B7600AF8E91 /* SettingsViewModel.swift */; };
+		B90C2079283B9B8500AF8E91 /* SettingsViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90C2078283B9B8500AF8E91 /* SettingsViewCoordinator.swift */; };
+		B9DBC4EE283CE70300BF514A /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DBC4ED283CE70300BF514A /* SettingsSection.swift */; };
+		B9DBC4F2283CE87400BF514A /* SettingsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DBC4F0283CE87400BF514A /* SettingsCollectionViewCell.swift */; };
+		B9DBC4F3283CE87400BF514A /* SettingsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9DBC4F1283CE87400BF514A /* SettingsCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +135,12 @@
 		B9094FC8283B5BD700C2F91E /* WForcastDetailCoFactorCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WForcastDetailCoFactorCollectionViewCell.swift; sourceTree = "<group>"; };
 		B9094FC9283B5BD700C2F91E /* WForcastDetailCoFactorCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WForcastDetailCoFactorCollectionViewCell.xib; sourceTree = "<group>"; };
 		B9094FCD283B61EE00C2F91E /* WForeCastDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WForeCastDetailModel.swift; sourceTree = "<group>"; };
+		B90C2074283B9B6700AF8E91 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		B90C2076283B9B7600AF8E91 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		B90C2078283B9B8500AF8E91 /* SettingsViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewCoordinator.swift; sourceTree = "<group>"; };
+		B9DBC4ED283CE70300BF514A /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
+		B9DBC4F0283CE87400BF514A /* SettingsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCollectionViewCell.swift; sourceTree = "<group>"; };
+		B9DBC4F1283CE87400BF514A /* SettingsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +226,7 @@
 		B9094F24283B1AB100C2F91E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B90C2070283B9B3200AF8E91 /* Settings */,
 				B9094FAB283B550C00C2F91E /* Detail */,
 				B9094F25283B1AB100C2F91E /* Home */,
 			);
@@ -223,8 +236,8 @@
 		B9094F25283B1AB100C2F91E /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				B9094F26283B1AB100C2F91E /* ViewModel */,
 				B9094F28283B1AB100C2F91E /* Coordinator */,
+				B9094F26283B1AB100C2F91E /* ViewModel */,
 				B9094F2A283B1AB100C2F91E /* View */,
 			);
 			path = Home;
@@ -258,6 +271,7 @@
 		B9094F35283B1AB100C2F91E /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				B9DBC4EF283CE85A00BF514A /* SettingsCell */,
 				B9094FB7283B59C300C2F91E /* WForcastDetailCell */,
 				B9094F40283B1AB100C2F91E /* Home */,
 			);
@@ -429,8 +443,8 @@
 		B9094FAB283B550C00C2F91E /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				B9094FAC283B550C00C2F91E /* ViewModel */,
 				B9094FAE283B550C00C2F91E /* Coordinator */,
+				B9094FAC283B550C00C2F91E /* ViewModel */,
 				B9094FB0283B550C00C2F91E /* View */,
 			);
 			path = Detail;
@@ -494,6 +508,50 @@
 				B9094FCD283B61EE00C2F91E /* WForeCastDetailModel.swift */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		B90C2070283B9B3200AF8E91 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				B90C2073283B9B4F00AF8E91 /* Coordinator */,
+				B90C2072283B9B4900AF8E91 /* ViewModel */,
+				B90C2071283B9B3D00AF8E91 /* View */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		B90C2071283B9B3D00AF8E91 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B90C2074283B9B6700AF8E91 /* SettingsViewController.swift */,
+				B9DBC4ED283CE70300BF514A /* SettingsSection.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B90C2072283B9B4900AF8E91 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B90C2076283B9B7600AF8E91 /* SettingsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B90C2073283B9B4F00AF8E91 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				B90C2078283B9B8500AF8E91 /* SettingsViewCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		B9DBC4EF283CE85A00BF514A /* SettingsCell */ = {
+			isa = PBXGroup;
+			children = (
+				B9DBC4F0283CE87400BF514A /* SettingsCollectionViewCell.swift */,
+				B9DBC4F1283CE87400BF514A /* SettingsCollectionViewCell.xib */,
+			);
+			path = SettingsCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -610,6 +668,7 @@
 			files = (
 				B9094F85283B1AB200C2F91E /* LoadingCollectionCell.xib in Resources */,
 				B9094F74283B1AB200C2F91E /* WeeklyForecastCollectionViewCell.xib in Resources */,
+				B9DBC4F3283CE87400BF514A /* SettingsCollectionViewCell.xib in Resources */,
 				B9094EFF283B072900C2F91E /* LaunchScreen.storyboard in Resources */,
 				B9094EFC283B072900C2F91E /* Assets.xcassets in Resources */,
 				B9094FCB283B5BD700C2F91E /* WForcastDetailCoFactorCollectionViewCell.xib in Resources */,
@@ -645,8 +704,10 @@
 				B9094FCA283B5BD700C2F91E /* WForcastDetailCoFactorCollectionViewCell.swift in Sources */,
 				B9094F7C283B1AB200C2F91E /* APIService+Helper.swift in Sources */,
 				B9094F8A283B1AB200C2F91E /* WeatherForecastModel.swift in Sources */,
+				B90C2075283B9B6700AF8E91 /* SettingsViewController.swift in Sources */,
 				B9094F98283B297500C2F91E /* UIView+NibView.swift in Sources */,
 				B9094F77283B1AB200C2F91E /* APIWeatherForcastService.swift in Sources */,
+				B90C2077283B9B7600AF8E91 /* SettingsViewModel.swift in Sources */,
 				B9094F96283B297500C2F91E /* NibView.swift in Sources */,
 				B9094FB4283B550C00C2F91E /* MCharacterDetailCoordinator.swift in Sources */,
 				B9094FC5283B59C300C2F91E /* WForcastDetailInfoMainCollectionViewCell.swift in Sources */,
@@ -656,12 +717,15 @@
 				B9094EF3283B072800C2F91E /* AppDelegate.swift in Sources */,
 				B9094F7D283B1AB200C2F91E /* extension.swift in Sources */,
 				B9094FB5283B550C00C2F91E /* WForcastDetailSection.swift in Sources */,
+				B9DBC4F2283CE87400BF514A /* SettingsCollectionViewCell.swift in Sources */,
 				B9094F89283B1AB200C2F91E /* DiffableDatasource.swift in Sources */,
 				B9094F80283B1AB200C2F91E /* Coordinator.swift in Sources */,
 				B9094FCE283B61EE00C2F91E /* WForeCastDetailModel.swift in Sources */,
 				B9094F66283B1AB200C2F91E /* WeatherForcastViewModel.swift in Sources */,
 				B9094F7E283B1AB200C2F91E /* UICollectionView+Extension.swift in Sources */,
 				B9094FAA283B4FA000C2F91E /* DateHelper.swift in Sources */,
+				B9DBC4EE283CE70300BF514A /* SettingsSection.swift in Sources */,
+				B90C2079283B9B8500AF8E91 /* SettingsViewCoordinator.swift in Sources */,
 				B9094FB6283B550C00C2F91E /* WForcastDetailViewController.swift in Sources */,
 				B9094EF5283B072800C2F91E /* SceneDelegate.swift in Sources */,
 				B9094F75283B1AB200C2F91E /* WeeklyForecastCollectionViewCell.swift in Sources */,
