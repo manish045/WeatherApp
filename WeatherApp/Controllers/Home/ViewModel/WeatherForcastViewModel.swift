@@ -10,7 +10,7 @@ import Combine
 import CoreLocation
     
 protocol WeatherForcastModelInput {
-    func fetchWeatherForcast()
+    func addChangeInTempObserver()
     func pushToDetailScreen(model: WeatherForecastModel)
     func openSettings()
 }
@@ -30,6 +30,7 @@ final class DefaultWeatherForcastViewModel: WeatherForcastViewModel {
     // notifies for any error
     var didGetError = PassthroughSubject<APIError, Never>()
     
+    var dispose = Set<AnyCancellable>()
     
     private var apiService: APIWeatherForcastService
     private var coordinator: WeatherForcastCoordinatorInput
@@ -41,7 +42,7 @@ final class DefaultWeatherForcastViewModel: WeatherForcastViewModel {
         self.coordinator = coordinator
     }
 
-    func fetchWeatherForcast() {
+    private func fetchWeatherForcast() {
         self.fetchCurrentCoordinates { [weak self] lat, long in
             guard let self = self else {return}
             self.apiService.performRequest(endPoint: .dailyForecast, parameters: self.createParametersToFetchForcast(latitude: lat, longitude: long)) { [weak self] (result: APIResult<WeatherDataModel, APIError>) in
@@ -75,8 +76,8 @@ final class DefaultWeatherForcastViewModel: WeatherForcastViewModel {
     
     private func createParametersToFetchForcast(latitude: Double, longitude: Double) -> [String : Any] {
         let daysNumber = 16
-        let unit = TemperatureUnitManager.shared.generalUnit.rawValue
-        
+        let unit = TemperatureUnitManager.shared.currentUnit.rawValue
+
         return [
             "days": daysNumber,
             "lat": latitude,
@@ -95,6 +96,14 @@ final class DefaultWeatherForcastViewModel: WeatherForcastViewModel {
                                                             highTemp: model.highTemp,
                                                             weather: model.weather)
         self.coordinator.pushToDetail(model: model, subInfoModel: subInfoModel)
+    }
+    
+    func addChangeInTempObserver() {
+        TemperatureUnitManager.shared.changeInTempUnit
+            .sink { unitKey in
+                self.fetchWeatherForcast()
+            }
+            .store(in: &dispose)
     }
     
     func openSettings() {

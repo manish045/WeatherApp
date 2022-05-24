@@ -42,7 +42,9 @@ final class DefaultSettingsViewModel: SettingsViewModel {
     
     func saveTempUnit() {
         let unit = selectedUnit.value
-        TemperatureUnitManager.shared.updateUnit(unit: unit)
+        if unit != TemperatureUnitManager.shared.currentUnit {
+            TemperatureUnitManager.shared.updateUnit(unit: unit)
+        }
     }
     
     func isSelectedUnit(unit: UnitKey) -> Bool {

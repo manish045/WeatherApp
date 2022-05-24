@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-
+import Combine
 
 extension UIView {
     func setCornerRadius(_ radius: CGFloat) {
@@ -42,16 +42,19 @@ public enum UnitKey: String, Codable {
 class TemperatureUnitManager {
     
     let generalUnit :UnitKey = .celcius
-    public private(set) var currentUnit :UnitKey!
+    
+    @Published public private(set) var currentUnit :UnitKey!
     private var dafault = UserDefaultsManager.shared
     
     static var shared: TemperatureUnitManager = TemperatureUnitManager()
+    
+    var changeInTempUnit: Published<UnitKey?>.Publisher {$currentUnit}
 
     fileprivate init(){
         if let currentUnit = dafault.loadObject(forKey: .tempUnit) as? String{
             self.currentUnit = UnitKey(rawValue: currentUnit)
         }else {
-            self.currentUnit = .celcius
+            self.currentUnit = generalUnit
             dafault.saveObject(self.currentUnit.rawValue, key: .tempUnit)
         }
     }
