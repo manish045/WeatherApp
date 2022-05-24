@@ -54,6 +54,13 @@ class DatabaseManager {
             print("Error saving forecast data")
             print(error)
         }
-        
+    }
+    
+    //Fetch saved WeatherForecastList from database
+    func fetchWeatherForecastList(_ completion: @escaping ((APIResult<WeatherForecastList, Error>) -> Void)){
+        // Open the local-only default realm
+        let storableWeatherList = weatherForcastRealm.objects(StorableWeatherForecast.self)
+        let weatherList = storableWeatherList.compactMap{ ($0).model }
+        completion(.success(Array(weatherList)))
     }
 }

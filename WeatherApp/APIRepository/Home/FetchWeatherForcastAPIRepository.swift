@@ -24,8 +24,16 @@ struct FetchWeatherForcastAPIRepository: WeatherAPIRepository {
                 let weatherDataArray = model.data ?? []
                 saveWeatherForecastData(weatherForcastList: weatherDataArray)
                 completion(.success(weatherDataArray))
-            case .error(let error):
-                completion(.error(error))
+            case .error(let apiError):
+               
+                DatabaseManager.shared.fetchWeatherForecastList { result in
+                    switch result {
+                    case .success(let weatherList):
+                        completion(.success(weatherList))
+                    case .error(_):
+                        completion(.error(apiError))
+                    }
+                }
             }
         }
     }
@@ -33,9 +41,5 @@ struct FetchWeatherForcastAPIRepository: WeatherAPIRepository {
     func saveWeatherForecastData(weatherForcastList: WeatherForecastList) {
         DatabaseManager.shared.removeAllWeatherForecastData()
         DatabaseManager.shared.saveWeatherList(weatherForecastList: weatherForcastList)
-    }
-    
-    func loadSavedData() {
-        DatabaseManager.shared.lo
     }
 }
