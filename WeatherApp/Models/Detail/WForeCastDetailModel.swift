@@ -14,7 +14,7 @@ struct WeatherDetailInfoModel: Hashable {
     var temp: Double?
     var lowTemp: Double?
     var highTemp: Double?
-    var weather: Weather?
+    var weather: WeatherDescription?
     
     static func == (lhs: WeatherDetailInfoModel, rhs: WeatherDetailInfoModel) -> Bool {
         return lhs.uuid == rhs.uuid &&

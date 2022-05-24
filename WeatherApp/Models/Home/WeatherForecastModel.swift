@@ -38,7 +38,7 @@ struct WeatherForecastModel: BaseModel, Hashable {
     var appMinTemp, windSpd: Double?
     var windCdirFull: String?
     var appMaxTemp, vis: Double?
-    var weather: Weather?
+    var weather: WeatherDescription?
     var precip, lowTemp: Double?
     var datetime: String?
     var temp: Double?
@@ -125,7 +125,7 @@ struct WeatherForecastModel: BaseModel, Hashable {
 }
 
 // MARK: - Weather
-struct Weather: Codable {
+struct WeatherDescription: Codable {
     let icon: String?
     let code: Int?
     let weatherDescription: String?
