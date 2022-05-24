@@ -64,6 +64,10 @@
 		B9DBC4F2283CE87400BF514A /* SettingsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DBC4F0283CE87400BF514A /* SettingsCollectionViewCell.swift */; };
 		B9DBC4F3283CE87400BF514A /* SettingsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9DBC4F1283CE87400BF514A /* SettingsCollectionViewCell.xib */; };
 		B9DBC4F6283CF98B00BF514A /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DBC4F5283CF98B00BF514A /* UserDefaultsManager.swift */; };
+		B9DBC4FC283D22D700BF514A /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B9DBC4FB283D22D700BF514A /* RealmSwift */; };
+		B9DBC4FF283D231300BF514A /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DBC4FE283D231300BF514A /* DatabaseManager.swift */; };
+		B9DBC501283D25E000BF514A /* WeatherForcastStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DBC500283D25E000BF514A /* WeatherForcastStorage.swift */; };
+		B9DBC505283D370200BF514A /* FetchWeatherForcastAPIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DBC504283D370200BF514A /* FetchWeatherForcastAPIRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,6 +147,9 @@
 		B9DBC4F0283CE87400BF514A /* SettingsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCollectionViewCell.swift; sourceTree = "<group>"; };
 		B9DBC4F1283CE87400BF514A /* SettingsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsCollectionViewCell.xib; sourceTree = "<group>"; };
 		B9DBC4F5283CF98B00BF514A /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		B9DBC4FE283D231300BF514A /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		B9DBC500283D25E000BF514A /* WeatherForcastStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForcastStorage.swift; sourceTree = "<group>"; };
+		B9DBC504283D370200BF514A /* FetchWeatherForcastAPIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchWeatherForcastAPIRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +157,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9DBC4FC283D22D700BF514A /* RealmSwift in Frameworks */,
 				B9094F91283B232800C2F91E /* SDWebImage in Frameworks */,
 				B9094F8E283B230200C2F91E /* Alamofire in Frameworks */,
 			);
@@ -198,6 +206,7 @@
 				B9094FA0283B2EEE00C2F91E /* Application */,
 				B9094F5A283B1AB200C2F91E /* DiffableDataSource */,
 				B9094F35283B1AB100C2F91E /* Cells */,
+				B9DBC502283D36DC00BF514A /* APIRepository */,
 				B9094F24283B1AB100C2F91E /* Controllers */,
 				B9094F61283B1AB200C2F91E /* Models */,
 				B9094F43283B1AB200C2F91E /* Shared */,
@@ -292,6 +301,7 @@
 		B9094F43283B1AB200C2F91E /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				B9DBC4FD283D22FC00BF514A /* DatabaseManager */,
 				B9DBC4F4283CF8DF00BF514A /* UserDefaultManager */,
 				B9094FA5283B3D7700C2F91E /* LocationManager */,
 				B9094F44283B1AB200C2F91E /* UIImageView+ImageLoader.swift */,
@@ -384,7 +394,6 @@
 		B9094F61283B1AB200C2F91E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B9DBC4F7283D0F2800BF514A /* Settings */,
 				B9094FCC283B619C00C2F91E /* Detail */,
 				B9094F62283B1AB200C2F91E /* Home */,
 			);
@@ -395,6 +404,7 @@
 			isa = PBXGroup;
 			children = (
 				B9094F63283B1AB200C2F91E /* WeatherForecastModel.swift */,
+				B9DBC500283D25E000BF514A /* WeatherForcastStorage.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -566,6 +576,30 @@
 			path = UserDefaultManager;
 			sourceTree = "<group>";
 		};
+		B9DBC4FD283D22FC00BF514A /* DatabaseManager */ = {
+			isa = PBXGroup;
+			children = (
+				B9DBC4FE283D231300BF514A /* DatabaseManager.swift */,
+			);
+			path = DatabaseManager;
+			sourceTree = "<group>";
+		};
+		B9DBC502283D36DC00BF514A /* APIRepository */ = {
+			isa = PBXGroup;
+			children = (
+				B9DBC503283D36F000BF514A /* Home */,
+			);
+			path = APIRepository;
+			sourceTree = "<group>";
+		};
+		B9DBC503283D36F000BF514A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				B9DBC504283D370200BF514A /* FetchWeatherForcastAPIRepository.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -585,6 +619,7 @@
 			packageProductDependencies = (
 				B9094F8D283B230200C2F91E /* Alamofire */,
 				B9094F90283B232800C2F91E /* SDWebImage */,
+				B9DBC4FB283D22D700BF514A /* RealmSwift */,
 			);
 			productName = WeatherApp;
 			productReference = B9094EEF283B072800C2F91E /* WeatherApp.app */;
@@ -661,6 +696,7 @@
 			packageReferences = (
 				B9094F8C283B230200C2F91E /* XCRemoteSwiftPackageReference "Alamofire" */,
 				B9094F8F283B232800C2F91E /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				B9DBC4FA283D22D700BF514A /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = B9094EF0283B072800C2F91E /* Products */;
 			projectDirPath = "";
@@ -723,6 +759,7 @@
 				B9094F96283B297500C2F91E /* NibView.swift in Sources */,
 				B9094FB4283B550C00C2F91E /* MCharacterDetailCoordinator.swift in Sources */,
 				B9094FC5283B59C300C2F91E /* WForcastDetailInfoMainCollectionViewCell.swift in Sources */,
+				B9DBC4FF283D231300BF514A /* DatabaseManager.swift in Sources */,
 				B9094FA7283B3D8100C2F91E /* LocationManager.swift in Sources */,
 				B9094F83283B1AB200C2F91E /* Utils.swift in Sources */,
 				B9094F68283B1AB200C2F91E /* WeatherForcastSection.swift in Sources */,
@@ -738,11 +775,13 @@
 				B9094FAA283B4FA000C2F91E /* DateHelper.swift in Sources */,
 				B9DBC4F6283CF98B00BF514A /* UserDefaultsManager.swift in Sources */,
 				B9DBC4EE283CE70300BF514A /* SettingsSection.swift in Sources */,
+				B9DBC505283D370200BF514A /* FetchWeatherForcastAPIRepository.swift in Sources */,
 				B90C2079283B9B8500AF8E91 /* SettingsViewCoordinator.swift in Sources */,
 				B9094FB6283B550C00C2F91E /* WForcastDetailViewController.swift in Sources */,
 				B9094EF5283B072800C2F91E /* SceneDelegate.swift in Sources */,
 				B9094F75283B1AB200C2F91E /* WeeklyForecastCollectionViewCell.swift in Sources */,
 				B9094F69283B1AB200C2F91E /* WeatherForcastViewController.swift in Sources */,
+				B9DBC501283D25E000BF514A /* WeatherForcastStorage.swift in Sources */,
 				B9094F78283B1AB200C2F91E /* WeatherForcastServiceUtil.swift in Sources */,
 				B9094F87283B1AB200C2F91E /* LoadingCollectionCell.swift in Sources */,
 				B9094F9E283B2DFF00C2F91E /* AppAppearance.swift in Sources */,
@@ -1111,6 +1150,14 @@
 				kind = branch;
 			};
 		};
+		B9DBC4FA283D22D700BF514A /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1123,6 +1170,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B9094F8F283B232800C2F91E /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImage;
+		};
+		B9DBC4FB283D22D700BF514A /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B9DBC4FA283D22D700BF514A /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

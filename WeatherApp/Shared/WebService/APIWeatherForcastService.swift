@@ -14,13 +14,7 @@ enum APIResult<T, APIError> {
     case error(APIError)
 }
 
-protocol PerformRequest {
-    func performRequest<T: BaseModel>(endPoint: EndPoints,
-                                      parameters: [String : Any],
-                                      completion: @escaping (APIResult<T, APIError>) -> Void)
-}
-
-class APIWeatherForcastService: SessionManager, PerformRequest {
+class APIWeatherForcastService: SessionManager {
     
     static let shared = APIWeatherForcastService()
     var network: Network

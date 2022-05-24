@@ -32,11 +32,11 @@ final class DefaultWeatherForcastViewModel: WeatherForcastViewModel {
     
     var dispose = Set<AnyCancellable>()
     
-    private var apiService: APIWeatherForcastService
+    private var apiService: WeatherAPIRepository
     private var coordinator: WeatherForcastCoordinatorInput
     private var weatherDataModel: WeatherDataModel?
     
-    init(apiService: APIWeatherForcastService = APIWeatherForcastService.shared,
+    init(apiService: WeatherAPIRepository = FetchWeatherForcastAPIRepository(),
          coordinator: WeatherForcastCoordinatorInput) {
         self.apiService = apiService
         self.coordinator = coordinator
@@ -45,12 +45,12 @@ final class DefaultWeatherForcastViewModel: WeatherForcastViewModel {
     private func fetchWeatherForcast() {
         self.fetchCurrentCoordinates { [weak self] lat, long in
             guard let self = self else {return}
-            self.apiService.performRequest(endPoint: .dailyForecast, parameters: self.createParametersToFetchForcast(latitude: lat, longitude: long)) { [weak self] (result: APIResult<WeatherDataModel, APIError>) in
+            self.apiService.fetchDetails(endPoint: .dailyForecast, parameters: self.createParametersToFetchForcast(latitude: lat, longitude: long)) { [weak self] (result: APIResult<WeatherForecastList, APIError>) in
                 switch result {
-                case .success(let model):
+                case .success(let data):
                     guard let self = self else {return}
-                    self.weatherDataModel = model
-                    let weatherDataArray = model.data
+             //       self.weatherDataModel = model
+                    let weatherDataArray = data
                     self.loadDataSource.send(weatherDataArray ?? [])
                 case .error(let error):
                     guard let self = self else {return}
