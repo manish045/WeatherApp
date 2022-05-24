@@ -20,15 +20,15 @@ class SettingsCollectionViewCell: UICollectionViewCell {
     var unitKey: UnitKey! {
         didSet {
             self.titleLabel.text = unitKey.title
+    //        self.checkMarkImage.isHidden =
         }
     }
     
-    override var isSelected: Bool {
+    var isSelectedTemperature: Bool! {
         didSet {
-            self.checkMarkImage.isHidden = !isSelected
+            self.checkMarkImage.isHidden = !isSelectedTemperature
         }
     }
-
 }
 
 extension SettingsCollectionViewCell {

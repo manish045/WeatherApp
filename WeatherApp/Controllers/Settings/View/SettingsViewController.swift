@@ -20,9 +20,10 @@ class SettingsViewController: UIViewController {
     private lazy var datasource = DiffableDatasource<SettingsSection, SettingsItem>(collectionView: collectionView!, scheduler: scheduler)
     { [unowned self] (collectionView, indexPath, item) -> UICollectionViewCell? in
         switch item {
-        case .tempUnit(let unitKey):
+        case .tempUnit(let unitKey, let isSelected):
             let cell = collectionView.dequeueCell(SettingsCollectionViewCell.self, indexPath: indexPath)
             cell.unitKey = unitKey
+            cell.isSelectedTemperature = isSelected
             return cell
         }
     } supplementaryViewProvider: {
@@ -35,23 +36,35 @@ class SettingsViewController: UIViewController {
         // Do any additional setup after loading the view.
         setupNavigation()
         configureCollectionView()
-        self.createSnapshot()
+        addViewModelObservers()
     }
     
     private func configureCollectionView() {
         collectionView.registerNibCell(ofType: SettingsCollectionViewCell.self)
+        collectionView.delegate = self
     }
 
+    private func addViewModelObservers() {
+        viewModel.selectedUnit
+            .receive(on: scheduler.ui)
+            .sink { [weak self] _ in
+                self?.createSnapshot()
+            }
+            .store(in: &dispose)
+    }
+    
     func createSnapshot() {
         var snapshot = datasource.snapshot()
         snapshot.deleteAllItems()
        
         snapshot.appendSections([.sections(.celcius)])
-        let celciusItem: ItemHolder<SettingsItem> = .items(.tempUnit(.Celcius))
+        let celciusUnitKey = UnitKey.celcius
+        let celciusItem: ItemHolder<SettingsItem> = .items(.tempUnit(celciusUnitKey, viewModel.isSelectedUnit(unit: celciusUnitKey)))
         snapshot.appendItems([celciusItem], toSection: .sections(.celcius))
         
         snapshot.appendSections([.sections(.fahrenheit)])
-        let farenheittItem: ItemHolder<SettingsItem> = .items(.tempUnit(.Fahrenheit))
+        let fahrenheitUnitKey = UnitKey.fahrenheit
+        let farenheittItem: ItemHolder<SettingsItem> = .items(.tempUnit(fahrenheitUnitKey, viewModel.isSelectedUnit(unit: fahrenheitUnitKey)))
         snapshot.appendItems([farenheittItem], toSection: .sections(.fahrenheit))
         
         datasource.apply(snapshot)
@@ -65,6 +78,17 @@ class SettingsViewController: UIViewController {
     }
     
     @objc private func saveButtonPressed() {
+        viewModel.saveTempUnit()
         viewModel.dismissViewController()
+    }
+}
+
+extension SettingsViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? SettingsCollectionViewCell else {return}
+        if let unitKey = cell.unitKey {
+            self.viewModel.updateTempUnit(unitKey: unitKey)
+        }
     }
 }
