@@ -10,26 +10,26 @@ import Foundation
 protocol WeatherAPIRepository {
     func fetchDetails(endPoint: EndPoints,
                       parameters: [String : Any],
-                      completion: @escaping (APIResult<WeatherForecastList, APIError>) -> Void)
+                      completion: @escaping (APIResult<WeatherDataModel, APIError>) -> Void)
 }
 
 struct FetchWeatherForcastAPIRepository: WeatherAPIRepository {
     
     func fetchDetails(endPoint: EndPoints,
                       parameters: [String : Any],
-                      completion: @escaping (APIResult<WeatherForecastList, APIError>) -> Void) {
+                      completion: @escaping (APIResult<WeatherDataModel, APIError>) -> Void) {
         APIWeatherForcastService.shared.performRequest(endPoint: endPoint, parameters: parameters) { (result: APIResult<WeatherDataModel, APIError>) in
             switch result {
             case .success(let model):
-                let weatherDataArray = model.data ?? []
-                saveWeatherForecastData(weatherForcastList: weatherDataArray)
-                completion(.success(weatherDataArray))
+                saveWeatherForecastData(weatherModel: model)
+                completion(.success(model))
             case .error(let apiError):
                
                 DatabaseManager.shared.fetchWeatherForecastList { result in
                     switch result {
                     case .success(let weatherList):
-                        completion(.success(weatherList))
+                        let model = createOfflineWeatherDataModel(weatherList: weatherList)
+                        completion(.success(model))
                     case .error(_):
                         completion(.error(apiError))
                     }
@@ -38,8 +38,25 @@ struct FetchWeatherForcastAPIRepository: WeatherAPIRepository {
         }
     }
     
-    func saveWeatherForecastData(weatherForcastList: WeatherForecastList) {
-        DatabaseManager.shared.removeAllWeatherForecastData()
-        DatabaseManager.shared.saveWeatherList(weatherForecastList: weatherForcastList)
+    func saveWeatherForecastData(weatherModel: WeatherDataModel) {
+        if let weatherForcastList = weatherModel.data, weatherForcastList.count > 0 {
+            UserDefaultsManager.shared.saveObject(weatherModel.cityName, key: .cityName)
+            UserDefaultsManager.shared.saveObject(weatherModel.lat, key: .lat)
+            UserDefaultsManager.shared.saveObject(weatherModel.lon, key: .long)
+
+            DatabaseManager.shared.removeAllWeatherForecastData()
+            DatabaseManager.shared.saveWeatherList(weatherForecastList: weatherForcastList)
+        }
+    }
+    
+    func createOfflineWeatherDataModel(weatherList: WeatherForecastList) -> WeatherDataModel {
+        let cityName = UserDefaultsManager.shared.loadObject(forKey: .cityName) as? String
+        let lat = UserDefaultsManager.shared.loadObject(forKey: .lat) as? Double
+        let long = UserDefaultsManager.shared.loadObject(forKey: .long) as? Double
+        
+        return WeatherDataModel(data: weatherList,
+                                cityName: cityName,
+                                lon: long,
+                                lat: lat)
     }
 }

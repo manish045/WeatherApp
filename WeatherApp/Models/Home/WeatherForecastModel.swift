@@ -14,16 +14,12 @@ struct WeatherDataModel: BaseModel {
     let data: WeatherForecastList?
     let cityName: String?
     let lon: Double?
-    let timezone: String?
     let lat: Double?
-    let countryCode, stateCode: String?
     
     enum CodingKeys: String, CodingKey {
         case data
         case cityName = "city_name"
-        case lon, timezone, lat
-        case countryCode = "country_code"
-        case stateCode = "state_code"
+        case lon, lat
     }
 }
 

@@ -45,13 +45,12 @@ final class DefaultWeatherForcastViewModel: WeatherForcastViewModel {
     private func fetchWeatherForcast() {
         self.fetchCurrentCoordinates { [weak self] lat, long in
             guard let self = self else {return}
-            self.apiService.fetchDetails(endPoint: .dailyForecast, parameters: self.createParametersToFetchForcast(latitude: lat, longitude: long)) { [weak self] (result: APIResult<WeatherForecastList, APIError>) in
+            self.apiService.fetchDetails(endPoint: .dailyForecast, parameters: self.createParametersToFetchForcast(latitude: lat, longitude: long)) { [weak self] (result: APIResult<WeatherDataModel, APIError>) in
                 switch result {
-                case .success(let data):
+                case .success(let model):
                     guard let self = self else {return}
-             //       self.weatherDataModel = model
-                    let weatherDataArray = data
-                    self.loadDataSource.send(weatherDataArray ?? [])
+                    self.weatherDataModel = model
+                    self.loadDataSource.send(model.data ?? [])
                 case .error(let error):
                     guard let self = self else {return}
                     self.didGetError.send(error)
