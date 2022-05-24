@@ -41,7 +41,7 @@ class WeatherForcastViewController: UIViewController {
         configureCollectionView()
         addViewModelObservers()
         createSnapshot(weatherList: [])
-        viewModel.fetchWeatherForcast()
+        viewModel.addChangeInTempObserver()
         // Do any additional setup after loading the view.
     }
     
