@@ -384,6 +384,7 @@
 		B9094F61283B1AB200C2F91E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B9DBC4F7283D0F2800BF514A /* Settings */,
 				B9094FCC283B619C00C2F91E /* Detail */,
 				B9094F62283B1AB200C2F91E /* Home */,
 			);

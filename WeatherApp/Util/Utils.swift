@@ -17,57 +17,59 @@ extension UIView {
 }
 
 public enum UnitKey: String, Codable {
-    case Fahrenheit = "I"
-    case Celcius = "M"
-    case WindSpeed = "m/s"
-    case Visibility = "KM"
-    case Pressure = "mb"
-    case Percent = "%"
-    case Precipitation = "mm"
+    case fahrenheit = "I"
+    case celcius = "M"
+    case windSpeed = "m/s"
+    case visibility = "KM"
+    case pressure = "mb"
+    case percent = "%"
+    case precipitation = "mm"
     
     var title: String{
         switch self {
-        case .Fahrenheit:
+        case .fahrenheit:
             return "F"
-        case .Celcius:
+        case .celcius:
             return "C"
         default:
             return self.rawValue
         }
     }
     
-    static let tempUnits :[UnitKey] = [.Celcius, .Fahrenheit]
+    static let tempUnits :[UnitKey] = [.celcius, .fahrenheit]
 }
 
 class TemperatureUnitManager {
     
-    public let generalUnit :UnitKey = .Celcius
-    
+    let generalUnit :UnitKey = .celcius
     public private(set) var currentUnit :UnitKey!
+    private var dafault = UserDefaultsManager.shared
     
     static var shared: TemperatureUnitManager = TemperatureUnitManager()
 
     fileprivate init(){
-        self.currentUnit = .Celcius
+        if let currentUnit = dafault.loadObject(forKey: .tempUnit) as? String{
+            self.currentUnit = UnitKey(rawValue: currentUnit)
+        }else {
+            self.currentUnit = .celcius
+            dafault.saveObject(self.currentUnit.rawValue, key: .tempUnit)
+        }
     }
     
     func updateUnit(unit: UnitKey){
+        dafault.saveObject(unit.rawValue, key: .tempUnit)
         currentUnit = unit
     }
     
     func calculateCelsius(fahrenheit: Double) -> Double {
         var celsius: Double
-        
         celsius = (fahrenheit - 32) * 5 / 9
-        
         return celsius
     }
     
     func calculateFahrenheit(celsius: Double) -> Double {
         var fahrenheit: Double
-        
-        fahrenheit = celsius * 9 / 5 + 32
-        
+        fahrenheit = celsius * 9 / 5 + 32        
         return fahrenheit
     }
     
@@ -75,7 +77,7 @@ class TemperatureUnitManager {
         var currentTemp :Double
         if currentUnit == generalUnit {
             currentTemp = temp
-        }else if currentUnit == .Fahrenheit {
+        }else if currentUnit == .fahrenheit {
             currentTemp = calculateFahrenheit(celsius: temp)
         }else {
             currentTemp = calculateCelsius(fahrenheit: temp)

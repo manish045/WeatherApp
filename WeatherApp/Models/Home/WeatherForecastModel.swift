@@ -78,16 +78,16 @@ struct WeatherForecastModel: BaseModel, Hashable {
     
     func getWeatherInfo()->[WeatherInfo]{
         return [
-            WeatherInfo(title: "Wind speed", icon: "wind", value: TemperatureUnitManager.shared.formatValueUnit(self.windSpd, unit: .WindSpeed)),
+            WeatherInfo(title: "Wind speed", icon: "wind", value: TemperatureUnitManager.shared.formatValueUnit(self.windSpd, unit: .windSpeed)),
             WeatherInfo(title: "Wind direction", icon: "wind", value: self.windCdirFull),
             WeatherInfo(title: "Sunrise", icon: "sunrise", value: self.sunriseTime),
             WeatherInfo(title: "Sunset", icon: "sunset", value: self.sunsetTime),
-            WeatherInfo(title: "Visibility", icon: "eye.fill", value: TemperatureUnitManager.shared.formatValueUnit(self.vis, unit: .Visibility)),
-            WeatherInfo(title: "Average pressure", icon: "stopwatch.fill", value: TemperatureUnitManager.shared.formatValueUnit(self.pres, unit: .Pressure)),
-            WeatherInfo(title: "Average relative humidity", icon: "humidity", value: TemperatureUnitManager.shared.formatValueUnit(Double(self.rh ?? 0), unit: .Percent)),
-            WeatherInfo(title: "Max Feels Like", icon: "thermometer", value: TemperatureUnitManager.shared.formatValueUnit(self.appMaxTemp, unit: .Celcius)),
-            WeatherInfo(title: "Min Feels Like", icon: "thermometer", value: TemperatureUnitManager.shared.formatValueUnit(self.appMinTemp, unit: .Celcius)),
-            WeatherInfo(title: "Accumulated liquid equivalent precipitation", icon: "aqi.medium", value: TemperatureUnitManager.shared.formatValueUnit(self.precip, unit: .Precipitation)),
+            WeatherInfo(title: "Visibility", icon: "eye.fill", value: TemperatureUnitManager.shared.formatValueUnit(self.vis, unit: .visibility)),
+            WeatherInfo(title: "Average pressure", icon: "stopwatch.fill", value: TemperatureUnitManager.shared.formatValueUnit(self.pres, unit: .pressure)),
+            WeatherInfo(title: "Average relative humidity", icon: "humidity", value: TemperatureUnitManager.shared.formatValueUnit(Double(self.rh ?? 0), unit: .percent)),
+            WeatherInfo(title: "Max Feels Like", icon: "thermometer", value: TemperatureUnitManager.shared.formatValueUnit(self.appMaxTemp, unit: .celcius)),
+            WeatherInfo(title: "Min Feels Like", icon: "thermometer", value: TemperatureUnitManager.shared.formatValueUnit(self.appMinTemp, unit: .celcius)),
+            WeatherInfo(title: "Accumulated liquid equivalent precipitation", icon: "aqi.medium", value: TemperatureUnitManager.shared.formatValueUnit(self.precip, unit: .precipitation)),
         ]
 
     }

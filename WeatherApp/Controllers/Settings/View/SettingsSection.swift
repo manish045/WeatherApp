@@ -13,7 +13,7 @@ enum SettingsSection: Int {
 }
 
 enum SettingsItem: Hashable {
-    case tempUnit(UnitKey)
+    case tempUnit(UnitKey, Bool)
 }
 
 extension SettingsSection: Sectionable {
