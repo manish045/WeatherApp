@@ -63,6 +63,7 @@
 		B9DBC4EE283CE70300BF514A /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DBC4ED283CE70300BF514A /* SettingsSection.swift */; };
 		B9DBC4F2283CE87400BF514A /* SettingsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DBC4F0283CE87400BF514A /* SettingsCollectionViewCell.swift */; };
 		B9DBC4F3283CE87400BF514A /* SettingsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9DBC4F1283CE87400BF514A /* SettingsCollectionViewCell.xib */; };
+		B9DBC4F6283CF98B00BF514A /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DBC4F5283CF98B00BF514A /* UserDefaultsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +142,7 @@
 		B9DBC4ED283CE70300BF514A /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
 		B9DBC4F0283CE87400BF514A /* SettingsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCollectionViewCell.swift; sourceTree = "<group>"; };
 		B9DBC4F1283CE87400BF514A /* SettingsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsCollectionViewCell.xib; sourceTree = "<group>"; };
+		B9DBC4F5283CF98B00BF514A /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -290,6 +292,7 @@
 		B9094F43283B1AB200C2F91E /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				B9DBC4F4283CF8DF00BF514A /* UserDefaultManager */,
 				B9094FA5283B3D7700C2F91E /* LocationManager */,
 				B9094F44283B1AB200C2F91E /* UIImageView+ImageLoader.swift */,
 				B9094F46283B1AB200C2F91E /* WebService */,
@@ -554,6 +557,14 @@
 			path = SettingsCell;
 			sourceTree = "<group>";
 		};
+		B9DBC4F4283CF8DF00BF514A /* UserDefaultManager */ = {
+			isa = PBXGroup;
+			children = (
+				B9DBC4F5283CF98B00BF514A /* UserDefaultsManager.swift */,
+			);
+			path = UserDefaultManager;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -724,6 +735,7 @@
 				B9094F66283B1AB200C2F91E /* WeatherForcastViewModel.swift in Sources */,
 				B9094F7E283B1AB200C2F91E /* UICollectionView+Extension.swift in Sources */,
 				B9094FAA283B4FA000C2F91E /* DateHelper.swift in Sources */,
+				B9DBC4F6283CF98B00BF514A /* UserDefaultsManager.swift in Sources */,
 				B9DBC4EE283CE70300BF514A /* SettingsSection.swift in Sources */,
 				B90C2079283B9B8500AF8E91 /* SettingsViewCoordinator.swift in Sources */,
 				B9094FB6283B550C00C2F91E /* WForcastDetailViewController.swift in Sources */,
