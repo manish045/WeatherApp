@@ -12,16 +12,19 @@ protocol WeatherForcastCoordinatorInput {
     func openSettings()
 }
 
+/// Coordinator :- Organizing flow logic between view controllers
 class WeatherForcastCoordinator: Coordinator, WeatherForcastCoordinatorInput {
     
     var rootController: UIViewController?
     
+    //Create View Controller instance with all possible initialization for viewModel and controller
     func makeModule() -> UIViewController {
         let vc = createViewController()
         rootController = vc
         return vc
     }
     
+    //Pass the navigationController to the initial controller
     private func createViewController() -> WeatherForcastViewController {
         // initializing view controller
         let view = WeatherForcastViewController.instantiateFromStoryboard()

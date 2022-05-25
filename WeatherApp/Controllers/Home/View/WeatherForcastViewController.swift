@@ -47,11 +47,13 @@ class WeatherForcastViewController: BaseViewController {
         self.navigationController?.navigationBar.isHidden = false
     }
     
+    //Register Cells for collectionView
     private func configureCollectionView() {
         collectionView.registerNibCell(ofType: WeeklyForecastCollectionViewCell.self)
         collectionView.delegate = self
     }
     
+    // Add observers from ViewModel to load data whenever change
     private func addViewModelObservers() {
         viewModel.loadDataSource
             .receive(on: scheduler.ui)
@@ -71,12 +73,18 @@ class WeatherForcastViewController: BaseViewController {
             .store(in: &dispose)
     }
     
+    //MARK :- Create and construct a section snapshot, then apply to `main` section in data source.
     func createSnapshot(weatherList: WeatherForecastList, state: LoadingState = .loading) {
         var snapshot = datasource.snapshot()
         snapshot.deleteAllItems()
        
+        //Append Section to snapshot
         snapshot.appendSections([.sections(.weatherForecast)])
+        
+        //Serialize data according to cell model
         let temperatureItem: [ItemHolder<TemperatureItem>] = weatherList.map{.items(.resultItem($0))}
+        
+        //Append cell to desired section
         snapshot.appendItems(temperatureItem, toSection: .sections(.weatherForecast))
         
         if state == .default || state == .loading{
