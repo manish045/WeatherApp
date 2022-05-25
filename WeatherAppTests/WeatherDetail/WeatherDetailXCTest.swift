@@ -43,7 +43,7 @@ class WeatherDetailXCTest: XCTestCase {
         XCTAssertEqual(collectionView?.numberOfItems(inSection: WForcastDetailSection.mainInfo.rawValue), 1)
         
         // expected one cells
-        XCTAssertEqual(collectionView?.numberOfItems(inSection: WForcastDetailSection.coFactors.rawValue), 1)
+        XCTAssertEqual(collectionView?.numberOfItems(inSection: WForcastDetailSection.coFactors.rawValue), 10)
     }
     
     
