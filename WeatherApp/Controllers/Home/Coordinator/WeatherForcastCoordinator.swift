@@ -31,7 +31,7 @@ class WeatherForcastCoordinator: Coordinator, WeatherForcastCoordinatorInput {
     }
     
     func pushToDetail(model: WeatherForecastModel, subInfoModel: WeatherDetailInfoModel) {
-        let vc = MCharacterDetailCoordinator().makeModule(model: model,
+        let vc = MForcastDetailCoordinator().makeModule(model: model,
                                                           subInfoModel: subInfoModel)
         rootController?.navigationController?.pushViewController(vc, animated: true)
     }

@@ -8,7 +8,7 @@
 import UIKit
 
 enum WeatherForcastSection: Int {
-    case characters = 0
+    case weatherForecast = 0
     case loader
 }
 
@@ -20,7 +20,7 @@ enum TemperatureItem: Hashable {
 extension WeatherForcastSection: Sectionable {
     func layout(environment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? {
         switch self {
-        case .characters:
+        case .weatherForecast:
             // Section
             let layoutSection = WeeklyForecastCollectionViewCell.heroCollectionSectionLayout
             layoutSection.contentInsets.top = 15

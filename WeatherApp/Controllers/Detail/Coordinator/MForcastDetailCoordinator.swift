@@ -7,11 +7,12 @@
 
 import UIKit
 
-protocol MCharacterDetailCoordinatorInput {
+protocol MForcastDetailCoordinatorInput {
     
 }
 
-class MCharacterDetailCoordinator: Coordinator {
+class MForcastDetailCoordinator: Coordinator, MForcastDetailCoordinatorInput {
+    
     var rootController: UIViewController?
     
     init() {}
