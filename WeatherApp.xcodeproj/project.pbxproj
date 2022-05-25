@@ -66,8 +66,8 @@
 		B9DBC4FF283D231300BF514A /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DBC4FE283D231300BF514A /* DatabaseManager.swift */; };
 		B9DBC501283D25E000BF514A /* WeatherForcastStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DBC500283D25E000BF514A /* WeatherForcastStorage.swift */; };
 		B9DBC505283D370200BF514A /* FetchWeatherForcastAPIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DBC504283D370200BF514A /* FetchWeatherForcastAPIRepository.swift */; };
-		B9DBC50B283D5D8600BF514A /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DBC50A283D5D8600BF514A /* LocalNotificationManager.swift */; };
 		B9DBC50D283D5DA500BF514A /* WeatherForecastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DBC50C283D5DA500BF514A /* WeatherForecastModel.swift */; };
+		B9DBC52D283DC5D100BF514A /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DBC52C283DC5D100BF514A /* LocalNotificationManager.swift */; };
 		B9DBC511283D87B600BF514A /* WeatherForecastTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DBC510283D87B600BF514A /* WeatherForecastTest.swift */; };
 		B9DBC513283D9C2800BF514A /* WeatherdataSample.json in Resources */ = {isa = PBXBuildFile; fileRef = B9DBC512283D9C2700BF514A /* WeatherdataSample.json */; };
 		B9DBC515283D9FEB00BF514A /* WeatherForcastAPIServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DBC514283D9FEB00BF514A /* WeatherForcastAPIServiceTest.swift */; };
@@ -153,8 +153,8 @@
 		B9DBC4FE283D231300BF514A /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		B9DBC500283D25E000BF514A /* WeatherForcastStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForcastStorage.swift; sourceTree = "<group>"; };
 		B9DBC504283D370200BF514A /* FetchWeatherForcastAPIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchWeatherForcastAPIRepository.swift; sourceTree = "<group>"; };
-		B9DBC50A283D5D8600BF514A /* LocalNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		B9DBC50C283D5DA500BF514A /* WeatherForecastModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherForecastModel.swift; sourceTree = "<group>"; };
+		B9DBC52C283DC5D100BF514A /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		B9DBC510283D87B600BF514A /* WeatherForecastTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherForecastTest.swift; sourceTree = "<group>"; };
 		B9DBC512283D9C2700BF514A /* WeatherdataSample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = WeatherdataSample.json; sourceTree = "<group>"; };
 		B9DBC514283D9FEB00BF514A /* WeatherForcastAPIServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForcastAPIServiceTest.swift; sourceTree = "<group>"; };
@@ -314,7 +314,7 @@
 		B9094F43283B1AB200C2F91E /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				B9DBC509283D5D8600BF514A /* LocalNotificationManager */,
+				B9DBC52B283DC5C100BF514A /* LocalNotificationManager */,
 				B9DBC4FD283D22FC00BF514A /* DatabaseManager */,
 				B9DBC4F4283CF8DF00BF514A /* UserDefaultManager */,
 				B9094FA5283B3D7700C2F91E /* LocationManager */,
@@ -614,13 +614,12 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		B9DBC509283D5D8600BF514A /* LocalNotificationManager */ = {
+		B9DBC52B283DC5C100BF514A /* LocalNotificationManager */ = {
 			isa = PBXGroup;
 			children = (
-				B9DBC50A283D5D8600BF514A /* LocalNotificationManager.swift */,
+				B9DBC52C283DC5D100BF514A /* LocalNotificationManager.swift */,
 			);
-			name = LocalNotificationManager;
-			path = ../../../../Desktop/LocalNotificationManager;
+			path = LocalNotificationManager;
 			sourceTree = "<group>";
 		};
 		B9DBC516283DA8C200BF514A /* Home */ = {
@@ -813,7 +812,7 @@
 				B9094F83283B1AB200C2F91E /* Utils.swift in Sources */,
 				B9094F68283B1AB200C2F91E /* WeatherForcastSection.swift in Sources */,
 				B9094EF3283B072800C2F91E /* AppDelegate.swift in Sources */,
-				B9DBC50B283D5D8600BF514A /* LocalNotificationManager.swift in Sources */,
+				B9DBC52D283DC5D100BF514A /* LocalNotificationManager.swift in Sources */,
 				B9094F7D283B1AB200C2F91E /* extension.swift in Sources */,
 				B9094FB5283B550C00C2F91E /* WForcastDetailSection.swift in Sources */,
 				B9DBC4F2283CE87400BF514A /* SettingsCollectionViewCell.swift in Sources */,
