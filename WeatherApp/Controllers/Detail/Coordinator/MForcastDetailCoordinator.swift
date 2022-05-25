@@ -11,7 +11,8 @@ protocol MForcastDetailCoordinatorInput {
     
 }
 
-class MForcastDetailCoordinator: Coordinator {
+class MForcastDetailCoordinator: Coordinator, MForcastDetailCoordinatorInput {
+    
     var rootController: UIViewController?
     
     init() {}
