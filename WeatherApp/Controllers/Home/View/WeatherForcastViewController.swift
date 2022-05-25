@@ -12,7 +12,6 @@ class WeatherForcastViewController: UIViewController {
     
     var viewModel: DefaultWeatherForcastViewModel!
     private var disposeBag = Set<AnyCancellable>()
-    private var state: LoadingState = .loading
 
     @IBOutlet weak var collectionView: UICollectionView!
     private let scheduler: SchedulerContext = SchedulerContextProvider.provide()
@@ -59,8 +58,7 @@ class WeatherForcastViewController: UIViewController {
             .receive(on: scheduler.ui)
             .sink { [weak self] weatherList in
                 guard let self = self else {return}
-                self.state = .completed
-                self.createSnapshot(weatherList: weatherList)
+                self.createSnapshot(weatherList: weatherList, state: .completed)
             }
             .store(in: &dispose)
         
@@ -68,19 +66,18 @@ class WeatherForcastViewController: UIViewController {
             .receive(on: scheduler.ui)
             .sink { [weak self] error in
                 guard let self = self else {return}
-                self.state = .completed
-                self.createSnapshot(weatherList: [])
+                self.createSnapshot(weatherList: [], state: .failed)
             }
             .store(in: &dispose)
     }
     
-    func createSnapshot(weatherList: [WeatherForecastModel]) {
+    func createSnapshot(weatherList: WeatherForecastList, state: LoadingState = .loading) {
         var snapshot = datasource.snapshot()
         snapshot.deleteAllItems()
        
-        snapshot.appendSections([.sections(.characters)])
-        let nowPlayingItems: [ItemHolder<TemperatureItem>] = weatherList.map{.items(.resultItem($0))}
-        snapshot.appendItems(nowPlayingItems, toSection: .sections(.characters))
+        snapshot.appendSections([.sections(.weatherForecast)])
+        let temperatureItem: [ItemHolder<TemperatureItem>] = weatherList.map{.items(.resultItem($0))}
+        snapshot.appendItems(temperatureItem, toSection: .sections(.weatherForecast))
         
         if state == .default || state == .loading{
             snapshot.appendSections([.loading])

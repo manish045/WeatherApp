@@ -1,0 +1,42 @@
+{
+    "data": [
+        {
+            "moonrise_ts": 1653234222,
+            "wind_cdir": "ENE",
+            "rh": 57,
+            "pres": 1007.7,
+            "high_temp": 26.6,
+            "sunset_ts": 1653299029,
+            "ozone": 365.2,
+            "moon_phase": 0.464907,
+            "wind_gust_spd": 4.8,
+            "snow_depth": 0,
+            "clouds": 68,
+            "ts": 1653246060,
+            "sunrise_ts": 1653247802,
+            "app_min_temp": 16.4,
+            "wind_spd": 4.4,
+            "pop": 15,
+            "wind_cdir_full": "east-northeast",
+            "slp": 1009.7,
+            "moon_phase_lunation": 0.75,
+            "valid_date": "2022-05-23",
+            "app_max_temp": 26,
+            "vis": 23.746,
+            "dewpt": 11.4,
+            "snow": 0,
+            "uv": 10.4,
+            "weather": {
+                "icon": "c03d",
+                "code": 803,
+                "description": "Broken clouds"
+            }
+        }
+    ],
+    "city_name": "Tokyo",
+    "lon": 139.78,
+    "timezone": "Asia/Tokyo",
+    "lat": 35.7,
+    "country_code": "JP",
+    "state_code": "40"
+}
