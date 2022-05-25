@@ -32,7 +32,7 @@ final class DefaultWeatherForcastViewModel: WeatherForcastViewModel {
     
     var dispose = Set<AnyCancellable>()
     
-    private var apiService: WeatherAPIRepository
+    var apiService: WeatherAPIRepository
     private var coordinator: WeatherForcastCoordinatorInput
     private var weatherDataModel: WeatherDataModel?
     
@@ -75,7 +75,7 @@ final class DefaultWeatherForcastViewModel: WeatherForcastViewModel {
         }
     }
     
-    private func createParametersToFetchForcast(latitude: Double, longitude: Double) -> [String : Any] {
+     func createParametersToFetchForcast(latitude: Double, longitude: Double) -> [String : Any] {
         let daysNumber = 16
         let unit = TemperatureUnitManager.shared.currentUnit.rawValue
 
