@@ -8,13 +8,12 @@
 import UIKit
 import Combine
 
-class WeatherForcastViewController: UIViewController {
+class WeatherForcastViewController: BaseViewController {
     
     var viewModel: DefaultWeatherForcastViewModel!
     private var disposeBag = Set<AnyCancellable>()
 
     @IBOutlet weak var collectionView: UICollectionView!
-    private let scheduler: SchedulerContext = SchedulerContextProvider.provide()
     private var dispose = Set<AnyCancellable>()
     
     private lazy var datasource = DiffableDatasource<WeatherForcastSection, TemperatureItem>(collectionView: collectionView!, scheduler: scheduler)
@@ -66,6 +65,7 @@ class WeatherForcastViewController: UIViewController {
             .receive(on: scheduler.ui)
             .sink { [weak self] error in
                 guard let self = self else {return}
+                self.showAlert(title: "Error", msg: error.asString)
                 self.createSnapshot(weatherList: [], state: .failed)
             }
             .store(in: &dispose)
@@ -88,7 +88,7 @@ class WeatherForcastViewController: UIViewController {
     }
     
     private func setupNavigation(){
-        title = "Weather Forcast"
+        title = LConstant.weatherForcast
         
         let settingBtn = UIBarButtonItem(image: UIImage(systemName: "gearshape"), style: .done, target: self, action: #selector(openSettingPage))
         self.navigationItem.rightBarButtonItems = [settingBtn]

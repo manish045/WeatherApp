@@ -11,7 +11,7 @@ import BackgroundTasks
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    let backgroundTaskID = "WeatherApp.refresh"
+    let backgroundTaskID = LConstant.backgroundRrfresh
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
