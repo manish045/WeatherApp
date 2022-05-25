@@ -13,6 +13,7 @@ protocol WeatherForcastModelInput {
     func addChangeInTempObserver()
     func pushToDetailScreen(model: WeatherForecastModel)
     func openSettings()
+    func refreshCollectionViewData()
 }
 
 protocol WeatherForcastViewModelOutput {
@@ -40,6 +41,10 @@ final class DefaultWeatherForcastViewModel: WeatherForcastViewModel {
          coordinator: WeatherForcastCoordinatorInput) {
         self.apiService = apiService
         self.coordinator = coordinator
+    }
+    
+    func refreshCollectionViewData() {
+        fetchWeatherForcast()
     }
 
     private func fetchWeatherForcast() {

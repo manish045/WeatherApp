@@ -16,6 +16,8 @@ class WeatherForcastViewController: BaseViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     private var dispose = Set<AnyCancellable>()
     
+    private let refreshControl = UIRefreshControl()
+    
     private lazy var datasource = DiffableDatasource<WeatherForcastSection, TemperatureItem>(collectionView: collectionView!, scheduler: scheduler)
     { [unowned self] (collectionView, indexPath, item) -> UICollectionViewCell? in
         switch item {
@@ -40,6 +42,7 @@ class WeatherForcastViewController: BaseViewController {
         addViewModelObservers()
         createSnapshot(weatherList: [])
         viewModel.addChangeInTempObserver()
+        configureRefreshControl()
         // Do any additional setup after loading the view.
     }
     
@@ -75,6 +78,7 @@ class WeatherForcastViewController: BaseViewController {
     
     //MARK :- Create and construct a section snapshot, then apply to `main` section in data source.
     func createSnapshot(weatherList: WeatherForecastList, state: LoadingState = .loading) {
+        self.refreshControl.endRefreshing()
         var snapshot = datasource.snapshot()
         snapshot.deleteAllItems()
        
@@ -104,6 +108,16 @@ class WeatherForcastViewController: BaseViewController {
     
     @objc private func openSettingPage() {
         self.viewModel.openSettings()
+    }
+    
+    private func configureRefreshControl() {
+        collectionView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshWeatherData(_:)), for: .valueChanged)
+    }
+    
+    @objc private func refreshWeatherData(_ sender: Any) {
+        // Fetch Weather Data
+        viewModel.refreshCollectionViewData()
     }
 }
 
