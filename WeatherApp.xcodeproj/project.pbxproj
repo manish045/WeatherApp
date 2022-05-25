@@ -71,6 +71,8 @@
 		B9DBC511283D87B600BF514A /* WeatherForecastTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DBC510283D87B600BF514A /* WeatherForecastTest.swift */; };
 		B9DBC513283D9C2800BF514A /* WeatherdataSample.json in Resources */ = {isa = PBXBuildFile; fileRef = B9DBC512283D9C2700BF514A /* WeatherdataSample.json */; };
 		B9DBC515283D9FEB00BF514A /* WeatherForcastAPIServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DBC514283D9FEB00BF514A /* WeatherForcastAPIServiceTest.swift */; };
+		B9DBC522283DADF900BF514A /* WeatherDetailXCTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DBC521283DADF900BF514A /* WeatherDetailXCTest.swift */; };
+		B9DBC525283DB6F000BF514A /* SettingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DBC524283DB6F000BF514A /* SettingTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +158,8 @@
 		B9DBC510283D87B600BF514A /* WeatherForecastTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherForecastTest.swift; sourceTree = "<group>"; };
 		B9DBC512283D9C2700BF514A /* WeatherdataSample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = WeatherdataSample.json; sourceTree = "<group>"; };
 		B9DBC514283D9FEB00BF514A /* WeatherForcastAPIServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForcastAPIServiceTest.swift; sourceTree = "<group>"; };
+		B9DBC521283DADF900BF514A /* WeatherDetailXCTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailXCTest.swift; sourceTree = "<group>"; };
+		B9DBC524283DB6F000BF514A /* SettingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +232,8 @@
 			children = (
 				B9DBC512283D9C2700BF514A /* WeatherdataSample.json */,
 				B9DBC516283DA8C200BF514A /* Home */,
+				B9DBC51C283DAAA600BF514A /* WeatherDetail */,
+				B9DBC523283DB6DC00BF514A /* Setting */,
 			);
 			path = WeatherAppTests;
 			sourceTree = "<group>";
@@ -626,6 +632,22 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		B9DBC51C283DAAA600BF514A /* WeatherDetail */ = {
+			isa = PBXGroup;
+			children = (
+				B9DBC521283DADF900BF514A /* WeatherDetailXCTest.swift */,
+			);
+			path = WeatherDetail;
+			sourceTree = "<group>";
+		};
+		B9DBC523283DB6DC00BF514A /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				B9DBC524283DB6F000BF514A /* SettingTest.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -830,6 +852,8 @@
 			files = (
 				B9DBC515283D9FEB00BF514A /* WeatherForcastAPIServiceTest.swift in Sources */,
 				B9DBC511283D87B600BF514A /* WeatherForecastTest.swift in Sources */,
+				B9DBC525283DB6F000BF514A /* SettingTest.swift in Sources */,
+				B9DBC522283DADF900BF514A /* WeatherDetailXCTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

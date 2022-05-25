@@ -14,7 +14,6 @@ class WForcastDetailViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    private var disposeBag = Set<AnyCancellable>()
     private let scheduler: SchedulerContext = SchedulerContextProvider.provide()
     
     private lazy var datasource = DiffableDatasource<WForcastDetailSection, WForcastDetailItem>(collectionView: collectionView!, scheduler: scheduler)
