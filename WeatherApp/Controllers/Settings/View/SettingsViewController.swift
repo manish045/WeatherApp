@@ -8,14 +8,13 @@
 import UIKit
 import Combine
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: BaseViewController {
     
     var viewModel: DefaultSettingsViewModel!
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     private var dispose = Set<AnyCancellable>()
-    private let scheduler: SchedulerContext = SchedulerContextProvider.provide()
 
     private lazy var datasource = DiffableDatasource<SettingsSection, SettingsItem>(collectionView: collectionView!, scheduler: scheduler)
     { [unowned self] (collectionView, indexPath, item) -> UICollectionViewCell? in
@@ -71,9 +70,9 @@ class SettingsViewController: UIViewController {
     }
     
     private func setupNavigation(){
-        title = "Settings"
+        title = LConstant.settingTitle
         
-        let settingBtn = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(saveButtonPressed))
+        let settingBtn = UIBarButtonItem(title: LConstant.save, style: .done, target: self, action: #selector(saveButtonPressed))
         self.navigationItem.rightBarButtonItems = [settingBtn]
     }
     

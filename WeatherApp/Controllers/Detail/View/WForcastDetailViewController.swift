@@ -8,14 +8,12 @@
 import UIKit
 import Combine
 
-class WForcastDetailViewController: UIViewController {
+class WForcastDetailViewController: BaseViewController {
 
     var viewModel: DefaultWForcastDetailViewModel!
     
     @IBOutlet weak var collectionView: UICollectionView!
-    
-    private let scheduler: SchedulerContext = SchedulerContextProvider.provide()
-    
+        
     private lazy var datasource = DiffableDatasource<WForcastDetailSection, WForcastDetailItem>(collectionView: collectionView!, scheduler: scheduler)
     { [unowned self] (collectionView, indexPath, item) -> UICollectionViewCell? in
         switch item {
@@ -36,7 +34,7 @@ class WForcastDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        title = "Weather Detail"
+        title = LConstant.detailTitle
         configureCollectionView()
         self.createSnapshot(weatherMainInfo: viewModel.subInfoModel, infoModel: viewModel.infoModel)
     }
