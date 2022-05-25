@@ -12,15 +12,18 @@ import Combine
 class SettingTestXCTest: XCTestCase {
     
     private var cancellables: Set<AnyCancellable>!
+    private var tempDelegate: MockTemperatureManager!
     
     override func setUp() {
         cancellables = []
+        tempDelegate = MockTemperatureManager()
     }
     
     override func tearDown() {
         cancellables = nil
+        tempDelegate = nil
     }
-    
+
     //MARK:- Test the datasource before request to server
     func testEmptyValueInDataSourceWhenOpeningData() throws {
         
@@ -52,6 +55,21 @@ class SettingTestXCTest: XCTestCase {
             .store(in: &cancellables)
     }
     
+    //Test change in temp unit
+    func testUpdateUnit() throws {
+
+        let expectation = XCTestExpectation(description: "Updated Unit")
+
+        tempDelegate.updateUnit(unit: UnitKey.fahrenheit)
+        tempDelegate.changeInTempUnit
+            .sink { unitKey in
+                XCTAssertEqual(unitKey, .fahrenheit)
+                expectation.fulfill()
+            }
+            .store(in: &cancellables)
+        
+
+    }
     
     private func makeSUT() throws -> SettingsViewController  {
         
@@ -64,4 +82,14 @@ class SettingTestXCTest: XCTestCase {
         return sut
     }
     
+}
+
+class MockTemperatureManager: TemperatureDelegate {
+    
+    @Published var currentUnit: UnitKey!
+    var changeInTempUnit: Published<UnitKey?>.Publisher {$currentUnit}
+    
+    func updateUnit(unit: UnitKey) {
+        currentUnit = unit
+    }
 }

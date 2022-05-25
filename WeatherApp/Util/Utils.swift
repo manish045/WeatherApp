@@ -39,7 +39,12 @@ public enum UnitKey: String, Codable {
     static let tempUnits :[UnitKey] = [.celcius, .fahrenheit]
 }
 
-class TemperatureUnitManager {
+protocol TemperatureDelegate {
+    var changeInTempUnit: Published<UnitKey?>.Publisher { get }
+    func updateUnit(unit: UnitKey)
+}
+
+class TemperatureUnitManager: TemperatureDelegate {
     
     let generalUnit :UnitKey = .celcius
     
