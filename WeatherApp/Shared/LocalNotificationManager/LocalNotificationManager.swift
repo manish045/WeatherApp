@@ -91,7 +91,7 @@ class LocalNotificationManager {
                 
         // Add the content to the notification content
         notificationContent.title = "Today's Weather"
-        notificationContent.body = "Check if it rain today?"
+        notificationContent.body = "Check if it's raining..."
         notificationContent.sound = .default
         
         let notificationTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
